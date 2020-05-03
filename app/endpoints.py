@@ -2,6 +2,9 @@ from rest_framework import generics, mixins
 from .serializers import *
 from localusers.serializers import *
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 
 class EntryView(
     generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,
@@ -76,3 +79,30 @@ class CenterView(
 
     def delete(self, request, center_name=None):
         return self.destroy(request, center_name)
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def get_current_entries(request):
+    if request.user.role == 'admin':
+        entries = Entries.objects.filter(closed='N')
+        return list(entries.values())
+    elif request.user.role == 'manager':
+        entries = Entries.objects.filter(closed='N', center=request.user.center)
+        return list(entries.values())
+    else:
+        raise NotImplementedError
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def get_closed_entries(request):
+    if request.user.role == 'admin':
+        entries = Entries.objects.filter(closed='Y')
+        return list(entries.values())
+    elif request.user.role == 'manager':
+        entries = Entries.objects.filter(closed='Y', center=request.user.center)
+        return list(entries.values())
+    else:
+        raise NotImplementedError
+

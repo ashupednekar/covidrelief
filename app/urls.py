@@ -17,6 +17,8 @@ urlpatterns = [
     path('userview/<str:username>', UserView.as_view(), name='center_view'),
     path('entryview', EntryView.as_view(), name='center_view'),
     path('entryview/<str:mobile>', EntryView.as_view(), name='center_view'),
+    path('getcurrententries', get_current_entries, name='get_current_entries'),
+    path('getclosedentries', get_closed_entries, name='get_closed_entries'),
 ]
 
 initialize_centers()
