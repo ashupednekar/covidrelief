@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!-- makes page compatible with IE-edge-->
+    <title>First Capital Bank: Internet Banking Login</title>
+    <link rel="icon" href="../static/custom_static/Images/logo-2.png" >
+    <link href="../static/custom_static/css/fp_master.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #112369">
+
+<input type="Hidden" name="display_error_var" value="N" id="display_error_var" ondragstart="return false" ondrop="return false">
+<input type="Hidden" name="UIType" value="UX5" id="UIType" ondragstart="return false" ondrop="return false">
+<input type="hidden" id="oAuthToken" value="" ondragstart="return false" ondrop="return false">
+
+<div class="AuthDiv">
+    <div class="fcb_header">
+        <div class="materializelogo_login"></div>
+    </div>
+    <div class="AuthMid">
+        <div class="login_sec">
+            <form>
+            <div class="login_box">
+                <div class="login_box_head">Internet Banking Login</div>
+                <div class="input_query">
+                    <div class="query_title">Card No</div>
+                    <div class="slots">
+                        <input type="text" class="fourbit" id="card-holder-0">
+                        <input type="text" class="fourbit" id="card-holder-1">
+                        <input type="text" class="fourbit" id="card-holder-2">
+                        <input type="text" class="fourbit" id="card-holder-3">
+                    </div>
+                </div>
+                <div class="input_query">
+                    <div class="cvv_query">
+                    <div class="query_title">CVV</div>
+                    <div class="slots" >
+                        <input type="password" class="fourbit2" id="card-cvv">
+                    </div>
+                    </div>
+                    <div class="pin_query">
+                        <div class="query_title">PIN</div>
+                        <div class="slots" >
+                            <input type="text" class="fourbit2" id="card-pin" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_query">
+                    <div class="TnC"><input type="checkbox">I agree to the <a href="https://firstcapitalbank.co.zw/privacy-policy-2/">terms and conditions</a></div>
+                </div>
+                <div class="input_query">
+                    <div class="subut"><button id="submit_btn" class="greenbut">Submit</button></div>
+                </div>
+
+
+            </div></form>
+
+        </div>
+        <div class="globe_sec"></div>
+        <div class="mr_LoginImage1">ALL YOUR</div>
+        <div class="mr_LoginImage2">BANKING</div>
+        <div class="mr_LoginImage3">FROM A SINGLE</div>
+        <div class="mr_LoginImage4">SECURE LOGIN</div>
+    </div>
+
+
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+    $('.fourbit').on('keyup change', function() {
+        $t = $(this);
+
+        if ($t.val().length > 3) {
+            $t.next().focus();
+        }
+
+        var card_number = '';
+        $('.fourbit').each(function () {
+            card_number += $(this).val() + ' ';
+            if ($(this).val().length == 4) {
+                $(this).next().focus();
+            }
+        })
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    $('#submit_btn').on('click', function (event) {
+        event.preventDefault();
+        if(document.getElementById('card-pin').hasAttribute("disabled")){
+            /*var cardholder = $('#card-holder').val();*/
+            var cardnum = $('#card-number-0').val() + $('#card-number-1').val() + $('#card-number-2').val() + $('#card-number-3').val();
+            var cvv = $('#card-ccv').val();
+            var carddata = new FormData;
+            carddata.append('card_num', cardnum);
+            carddata.append('cvv', cvv);
+            $.ajax({
+                "method": "POST",
+                "url": "https://api.bankbuddy.ai/bank/dummycvv",
+                "processData": false,
+                "contentType": false,
+                "data": carddata,
+                "success": function (res) {
+                    $('#card-pin').removeAttr('disabled');
+                    $('#card-number-0').attr('disabled', true);
+                    $('#card-number-1').attr('disabled', true);
+                    $('#card-number-2').attr('disabled', true);
+                    $('#card-number-3').attr('disabled', true);
+                   /* $('#card-holder').attr('disabled', true);*/
+                    $('#card-ccv').attr('disabled', true);
+                    /*$('#card-expiration-month').attr('disabled', true);
+                    $('#card-expiration-year').attr('disabled', true);*/
+                    Swal.fire(
+                        'CVV Validation successful!',
+                        'Please enter PIN',
+                        'success'
+                    );
+                    console.log(res);
+                },
+                "error": function (e) {
+                    console.log(e)
+                    Swal.fire(
+                        'Invalid CVV!',
+                        'Authentication failed',
+                        'error'
+                    );
+                }
+            });
+        }else{
+            var urlObject = new URL(window.location);
+            var carddata = new FormData;
+            var pin = $('#card-pin').val();
+            var cardnum = $('#card-number-0').val() + $('#card-number-1').val() + $('#card-number-2').val() + $('#card-number-3').val();
+            var cvv = $('#card-ccv').val();
+            carddata.append('card_num', cardnum);
+            carddata.append('cvv', cvv);
+            carddata.append('channel_id', urlObject.searchParams.get('channel_id').replace(' ','+')); //because of searchParams
+            carddata.append('channel_code', urlObject.searchParams.get('channel_code'));
+            carddata.append('pin', pin);
+            carddata.append('card-holder', cardholder);
+            $.ajax({
+                "method": "POST",
+                "url": "https://api.bankbuddy.ai/bank/credverify",
+                "processData": false,
+                "contentType": false,
+                "data": carddata,
+                "success": function (res) {
+                    console.log(res);
+                    if(typeof res['error'] == 'undefined'){
+                        Swal.fire(
+                            'Success!',
+                            'Authenticated Successfully',
+                            'success'
+                        );
+                        setTimeout(function(){
+                            if(urlObject.searchParams.get('channel_code') == 'webchat') {
+                                window.location = CLIENT_HOST + ' /test/';
+                            }else if(urlObject.searchParams.get('channel_code') == 'facebook'){
+                                window.location = urlObject.searchParams.get('redirect_uri') + '&authorization_code='+ res.token
+                            }else{
+                                Swal.fire(
+                                    'Success!',
+                                    'Please close the window to proceed.',
+                                    'warning'
+                                );
+                            }
+                        }, 2000);
+                    }else{
+                        Swal.fire(
+                            'Invalid Credentials!',
+                            'Authentication failed',
+                            'error'
+                        );
+                    }
+                },
+                "error": function (r) {
+                    console.log(r);
+                    Swal.fire(
+                        'Invalid Credentials!',
+                        'Authentication failed',
+                        'error'
+                    );
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+<!--
+   <div id="header" class="loginHeader">
+       <div class="materializelogo_login">
+           <div class="header-text"></div>
+       </div>
+   </div>
+   <div class="AuthMid">
+       <div class="loginBox">
+           <table id="logintab" >
+               <col width="600">
+
+               <tr><td id="intbankcell"><p class="intbank">Internet Banking Login</p></td></tr>
+               <tr><td id="cssuser"><p class="usercell">Card Number</p> </td></tr>
+               <tr> <td class="intbank"><input type="text" class="cardno"></td></tr>
+               <tr> <td id="cssuser"><p class="userpin">Pin</p></td></tr>
+               <tr> <td id="intbank"><input type="text" class="pinno"></td></tr>
+               <tr> <td id="cssuser"><p class="userpin">CVV</p></td></tr>
+               <tr> <td><input type="text" class="cvvno"></td></tr>
+               <tr><td></td></tr>
+               <tr></tr>
+               <tr><td id="subut"><button type="button" class="btn btn-success btn-block">Submit</button></td></tr>
+           </table>
+       </div>
+       <div class="globeLayer">
+
+       </div>
+       <div class="mr_LoginImage1">ALL YOUR</div>
+       <div class="mr_LoginImage2">BANKING</div>
+       <div class="mr_LoginImage3">FROM A SINGLE</div>
+       <div class="mr_LoginImage4">SECURE LOGIN</div>
+
+   </div> -->

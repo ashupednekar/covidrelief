@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+#ico{
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    z-index: 999999;
+    cursor: pointer;
+}
+#ico img{
+/*    height:50px;
+    width:50px;*/
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+}
+#main-chat-wrapper{
+    position: fixed;
+    width:100%;
+    max-width: 420px;
+    height:85%;
+    position: fixed;
+    right: 5px;
+    border-radius: 5px;
+    bottom: 10px;
+    display: none;
+    z-index: 99999;
+}
+#main-chat-wrapper{
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.chat-header{
+    padding: 5px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 99999;
+    height: 80px;
+    line-height: 20px;
+    padding-top: 5px;
+    max-width: 420px;
+    z-index: 99999;
+}
+.logo img{
+/*    height: 45px;
+    width: 45px;*/
+    /*top: 5px;*/
+}
+.header-wrapper{
+    display: inline-block;
+    z-index: 99999;
+}
+.header-wrapper h3,.header-wrapper p{
+    margin-bottom: 0px;
+    margin-top:5px;
+    margin-left: 10px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    z-index: 99999;
+}
+.header-wrapper p{
+    font-size: 12px;
+    z-index: 99999;
+}
+.close{
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    top:15px;
+    z-index: 99999;
+
+}
+#main-chat-wrapper iframe{
+    width:100%;
+    height: 100%;
+    border:0px;
+    z-index: 99999;
+    z-index: 99999;
+}

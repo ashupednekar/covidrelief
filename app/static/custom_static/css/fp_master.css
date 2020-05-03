@@ -1,0 +1,467 @@
+@font-face {
+    font-family: "roboto-medium";
+    src: url("../fonts/materializeFonts/roboto-medium.eot");
+    src: url("../fonts/materializeFonts/roboto-medium.eot?#iefix") format("embedded-opentype"), url("../fonts/materializeFonts/roboto-medium.woff2") format("woff2"), url("../fonts/materializeFonts/roboto-medium.woff") format("woff"), url("../fonts/materializeFonts/roboto-medium.ttf") format("truetype"), url("../fonts/materializeFonts/roboto-medium.svg#robotomedium") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "roboto-regular";
+    src: url("../fonts/materializeFonts/roboto-regular.eot");
+    src: url("../fonts/materializeFonts/roboto-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/materializeFonts/roboto-regular.woff2") format("woff2"), url("../fonts/materializeFonts/roboto-regular.woff") format("woff"), url("../fonts/materializeFonts/roboto-regular.ttf") format("truetype"), url("../fonts/materializeFonts/roboto-regular.svg#robotoregular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "roboto-bold";
+    src: url("../fonts/materializeFonts/roboto-bold.eot");
+    src: url("../fonts/materializeFonts/roboto-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/materializeFonts/roboto-bold.woff2") format("woff2"), url("../fonts/materializeFonts/roboto-bold.woff") format("woff"), url("../fonts/materializeFonts/roboto-bold.ttf") format("truetype"), url("../fonts/materializeFonts/roboto-bold.svg#robotobold") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "roboto-light";
+    src: url("../fonts/materializeFonts/roboto-light.eot");
+    src: url("../fonts/materializeFonts/roboto-light.eot?#iefix") format("embedded-opentype"), url("../fonts/materializeFonts/roboto-light.woff2") format("woff2"), url("../fonts/materializeFonts/roboto-light.woff") format("woff"), url("../fonts/materializeFonts/roboto-light.ttf") format("truetype"), url("../fonts/materializeFonts/roboto-light.svg#robotolight") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "roboto-thin";
+    src: url("../fonts/materializeFonts/roboto-thin.eot");
+    src: url("../fonts/materializeFonts/roboto-thin.eot?#iefix") format("embedded-opentype"), url("../fonts/materializeFonts/roboto-thin.woff2") format("woff2"), url("../fonts/materializeFonts/roboto-thin.woff") format("woff"), url("../fonts/materializeFonts/roboto-thin.ttf") format("truetype"), url("../fonts/materializeFonts/roboto-thin.svg#robotothin") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+/*@font-face {
+  font-family: "icomoon";
+  src: url("../fonts/materializeFonts/icomoon.eot?jn7xr0");
+  src: url("../fonts/materializeFonts/icomoon.eot?jn7xr0#iefix") format("embedded-opentype"), url("../fonts/materializeFonts/icomoon.ttf?jn7xr0") format("truetype"), url("../fonts/materializeFonts/icomoon.woff?jn7xr0") format("woff"), url("../fonts/materializeFonts/icomoon.svg?jn7xr0#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}*/
+@font-face {
+    font-family: "FontAwesome";
+    src: url("../fonts/materializeFonts/font-awesome.eot?v=4.5.0");
+    src: url("../fonts/materializeFonts/font-awesome.eot?#iefix&v=4.5.0") format("embedded-opentype"), url("../fonts/materializeFonts/font-awesome.woff2?v=4.5.0") format("woff2"), url("../fonts/materializeFonts/font-awesome.woff?v=4.5.0") format("woff"), url("../fonts/materializeFonts/font-awesome.ttf?v=4.5.0") format("truetype"), url("../fonts/materializeFonts/font-awesome.svg?v=4.5.0#fontawesomeregular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu-Light';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-300.svg#Ubuntu') format('svg');
+    /* Legacy iOS */
+}
+/* Light Ends */
+
+/* ubuntu-regular - latin */
+
+@font-face {
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-regular.svg#Ubuntu') format('svg');
+    /* Legacy iOS */
+}
+/* Regular Ends */
+
+/* ubuntu-500 - latin */
+
+/* Medium Begins */
+
+@font-face {
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-500.svg#Ubuntu') format('svg');
+    /* Legacy iOS */
+}
+/* Medium Ends */
+
+/* Bold Begins */
+
+/* ubuntu-700 - latin */
+
+@font-face {
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/moonraftFonts/ubuntu-v14-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+    url('../fonts/moonraftFonts/ubuntu-v14-latin-700.svg#Ubuntu') format('svg');
+    /* Legacy iOS */
+}
+/* Bold Ends */
+
+.mr_LoginBox
+{
+    position: relative;
+}
+.mr_LoginImage1
+{
+    position: absolute;
+    left: 38%;
+    top: 10%;
+    color: #fff;
+    font-family: Ubuntu-Bold,sans-serif !important;
+    font-size: 20px;
+}
+.mr_LoginImage2
+{
+    position: absolute;
+    left: 38%;
+    top: 14%;
+    color: #fff;
+    font-family: Ubuntu-Bold,sans-serif !important;
+    font-size: 28px;
+}
+.mr_LoginImage3
+{
+    position: absolute;
+    left: 38%;
+    top: 22%;
+    color: #fff;
+    font-family: Ubuntu-Bold,sans-serif !important;
+    font-size: 20px;
+}
+.mr_LoginImage4
+{
+    position: absolute;
+    left: 38%;
+    top: 26%;
+    color: #fff;
+    font-family: Ubuntu-Bold,sans-serif !important;
+    font-size: 28px;
+}
+
+/*
+@media only screen and (min-width: 1600px)
+{
+    .mr_LoginBox >.width50percent_login
+    {
+        margin-left: 150px;
+    }
+    .mr_LoginImage1,.mr_LoginImage2,.mr_LoginImage3,.mr_LoginImage4
+    {
+        left: 560px;
+    }
+    .mr_LoginHeader div >.materializelogo_login
+    {
+        margin-left: 80px;
+
+    }
+}
+
+@media only screen and (min-width: 2000px)
+{
+    .mr_LoginHeader div >.materializelogo_login
+    {
+        margin-left: 68px !important;
+
+    }
+}
+
+@media only screen and (min-width: 1800px)
+{
+    .mr_LoginHeader div >.materializelogo_login
+    {
+        margin-left: 75px;
+
+    }
+}
+
+@media only screen and (min-width: 1600px)
+{
+    .mr_LoginBox >.width50percent_login
+    {
+        margin-left: 150px;
+    }
+    .mr_LoginImage1,.mr_LoginImage2,.mr_LoginImage3,.mr_LoginImage4
+    {
+        left: 560px;
+    }
+    .mr_LoginHeader div >.materializelogo_login
+    {
+        margin-left: 80px;
+
+    }
+}
+
+@media only screen and (min-width: 2000px)
+{
+    .mr_LoginHeader div >.materializelogo_login
+    {
+        margin-left: 68px !important;
+
+    }
+}
+
+@media only screen and (min-width: 1800px)
+{
+    .mr_LoginHeader div >.materializelogo_login
+    {
+        margin-left: 75px;
+
+    }
+}*/
+
+
+@media only screen and (max-width: 500px)
+{
+    .login_sec{
+        float: none;
+        width: 94%;
+    }
+
+
+    .mr_LoginImage1,.mr_LoginImage2,.mr_LoginImage3,.mr_LoginImage4
+    {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-height: 400px)
+{
+    .login_sec{
+        height: 98%;
+    }
+
+
+    .mr_LoginImage1,.mr_LoginImage2,.mr_LoginImage3,.mr_LoginImage4
+    {
+        display: none;
+    }
+
+}
+
+
+/*@media only screen and (min-width: 501px) and (max-width: 800px)
+{
+    .login_sec{
+        width: 40%;
+    }
+
+
+    .globe_sec{
+        width: 55%;
+    }
+
+}*/
+
+
+
+/*html,body{
+    width: 100%;
+}
+*/
+
+html,body{
+    width: 100%;
+}
+
+/*.AuthDiv{
+    position: fixed;
+    height:100%;
+    width: 100%;
+}*/
+
+.AuthDiv{
+    position: absolute;
+    height:100%;
+    width: 100%;
+}
+
+.fcb_header{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 22%;
+}
+
+
+.materializelogo_login {
+    background: url("https://api.bankbuddy.ai/web/custom_static/Images/login-logo.png") no-repeat  scroll left 5px transparent ;
+    height: 40px;
+    background-size: 300px 30px;
+    width: 100%;
+    margin: 4% 6%;
+}
+
+.AuthMid{
+    position: relative;
+    float: left;
+    width: 100% ;
+    height: 78%;
+}
+
+.login_sec{
+    position: relative;
+    float: left;
+    min-width: 35%;
+    min-height: 70%;
+}
+
+.globe_sec{
+    position: relative;
+    float: right;
+    height: 100%;
+    min-width: 65%;
+    background: url("https://api.bankbuddy.ai/web/custom_static/Images/globemap.png") no-repeat;
+    background-size: 1050px 500px;
+}
+
+.login_box{
+    position: absolute;
+    float: left;
+    left: 15%;
+    right:10%;
+    width: 75%;
+    height: 100%;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+}
+
+
+
+.login_box_head{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 16%;
+    padding-top: 25px;
+    padding-left: 6%;
+    font-family: Ubuntu-Medium, sans-serif;
+    font-size: 18px;
+    color: #4f4f4f;
+}
+
+.input_query{
+    width: 100%;
+    position: relative;
+    float: left;
+    height: 21%;
+}
+
+.query_title{
+    font-family: Ubuntu-Regular, sans-serif;
+    font-size: 14px;
+    color: #4f4f4f;
+    position: relative;
+    float: left;
+    padding-left: 6%;
+    padding-top: 2%;
+    width: 100%;
+}
+
+
+.slots{
+    position: relative;
+    float: left;
+    padding-left: 6%;
+    padding-top: 2%;
+    width: 100%;
+    height: 70%;
+}
+
+.fourbit{
+    width: 22.5%;
+    height: 26px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 0;
+    box-sizing: border-box;
+}
+.cvv_query{
+    position: relative;
+    float: left;
+    width: 30%;
+    height:100%;
+    margin-left: 4%;
+}
+
+.pin_query{
+    position: relative;
+    float: left;
+    width: 30%;
+    height:100%;
+}
+
+.fourbit2{
+    width: 85%;
+    height: 26px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 0;
+    box-sizing: border-box;
+}
+
+.TnC{
+    font-family: Ubuntu-Regular, sans-serif;
+    font-size: 14px;
+    color: #4f4f4f;
+    position: relative;
+    float: left;
+    padding-left: 6%;
+    padding-top: 2%;
+    width: 100%;
+}
+
+.greenbut{
+    font-family: Ubuntu-Regular, sans-serif;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #8DC63F;
+    width: 94%;
+    position: center;
+    border-radius: 3px;
+    height: 40px;
+    border: none;
+}
+
+.subut{
+    padding-left: 6%;
+}
