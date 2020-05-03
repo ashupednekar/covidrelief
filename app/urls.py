@@ -8,7 +8,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     #other dashboard pages
     path('centers', views.centers, name='centres'),
-    path('assign', views.assign, name='centres'),
+    path('assign', views.assign, name='assign'),
+    path('entries', views.entries, name='entries'),
     #CRUD endpoints
     path('centerview', CenterView.as_view(), name='center_view'),
     path('centerview/<str:center_name>', CenterView.as_view(), name='center_view'),

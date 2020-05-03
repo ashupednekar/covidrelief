@@ -25,6 +25,12 @@ def centers(request):
         'host': SERVER_HOST
     })
 
+@login_required
+def entries(request):
+    return render(request, 'frontend/entries.html', {
+        'host': SERVER_HOST
+    })
+
 
 @login_required
 def assign(request):
