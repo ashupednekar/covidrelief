@@ -7,10 +7,10 @@
         // ============================================================== 
 
         new Chartist.Bar('.ct-chart-product', {
-            labels: ['1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr'],
+            labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
             series: [
-                [80, 12, 14, 13, 80, 120, 140, 13, 80, 120, 10, 130, 80, 12],
-                [20, 400, 50, 30, 20, 40, 5, 30, 2, 4, 50, 30, 20, 40]
+                [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
+                [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
             ]
         }, {
             stackBars: true,
