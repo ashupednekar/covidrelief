@@ -1,0 +1,138 @@
+{% extends "frontend/base.html" %}
+
+{% load static %}
+
+{% block page %}
+
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Entries</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Manage entries</a></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Add a new center</h5>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Input Center Name</label>
+                                                <input id="inputText3" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-success" id="done"><i class="fa fa-save"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                        <script>
+                            function loadtable(){
+                                jQuery.ajax({
+                                    "method": "GET",
+                                    "url": "{{ host }}/centerview",
+                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                    "success": function (res) {
+                                        for(var i=1; i<res.length+1; i++){
+                                            jQuery('#table_body').append(
+                                                "<tr>" +
+                                                "<td>"+i.toString()+"</td>" +
+                                                "<td>"+res[i]['center_name']+"</td>" +
+                                                "<td></td>" +
+                                                "</tr>"
+                                            )
+                                        }
+                                    }
+                                });
+                            }
+                            jQuery(document).ready(function () {
+                                loadtable();
+                            });
+                            jQuery('#done').on('click', function (event) {
+                                event.preventDefault()
+                                var data = new FormData();
+                                data.append('center_name', $('#inputText3').val())
+                                jQuery.ajax({
+                                       "method": "POST",
+                                       "url": "{{ host }}/centerview",
+                                       "data": data,
+                                       "processData": false,
+                                       "contentType": false,
+                                       "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                       "success": function (res) {
+                                            loadtable();
+                                            Swal.fire(
+                                                  'Success!',
+                                                  'Center added successfully!',
+                                                  'success'
+                                            );
+                                       },
+                                       "error": function (e) {
+                                            Swal.fire(
+                                                'error',
+                                                'Error!'
+                                            )
+                                       }
+                                });
+                            });
+                        </script>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- fixed header  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">View Centers</h5>
+                                <p>some message here...</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example4" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr.no</th>
+                                                <th>center Name</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_body">
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Sr.no</th>
+                                                <th>center Name</th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end basic table  -->
+                    <!-- ============================================================== -->
+                </div>
+                </div>
+            </div>
+{% endblock %}

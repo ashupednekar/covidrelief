@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'corsheaders',
 ]
 
 SITE_ID = 1
@@ -167,6 +168,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #CONFIG
 
+CORS_ORIGIN_ALLOW_ALL = True
 SERVER_HOST = 'https://www.help-lko.xyz/'
 # SERVER_HOST = 'http://3.7.102.76:8443'
 # SERVER_HOST = 'http://localhost:8000'
