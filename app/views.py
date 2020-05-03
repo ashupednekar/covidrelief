@@ -35,6 +35,12 @@ def entries(request):
         'host': SERVER_HOST
     })
 
+@login_required
+def closed(request):
+    return render(request, 'frontend/closed.html', {
+        'host': SERVER_HOST
+    })
+
 
 @login_required
 def assign(request):

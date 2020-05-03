@@ -10,6 +10,7 @@ urlpatterns = [
     path('centers', views.centers, name='centres'),
     path('assign', views.assign, name='assign'),
     path('entries', views.entries, name='entries'),
+    path('closed', views.closed, name='closed'),
     #CRUD endpoints
     path('centerview', CenterView.as_view(), name='center_view'),
     path('centerview/<str:center_name>', CenterView.as_view(), name='center_view'),
