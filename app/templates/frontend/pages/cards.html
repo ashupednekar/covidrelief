@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css' %}">
-    <link href="../assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/libs/css/style.css' %}">
-    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
-    <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
-    <title>CovidRelief - Bootstrap 4 Admin Dashboard </title>
+    <link rel="stylesheet" href="{% static 'assets//vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'assets//vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets//libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets//vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets//vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
+    <title>CovidRelief</title>
 </head>
 
 <body>
@@ -44,7 +44,7 @@
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action active">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-2.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="{% static 'assets/images/avatar-2.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
@@ -52,7 +52,7 @@
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-3.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="{% static 'assets/images/avatar-3.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">
 John Abraham</span>is now following you
                                                         <div class="notification-date">2 days ago</div>
@@ -61,7 +61,7 @@ John Abraham</span>is now following you
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-4.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="{% static 'assets/images/avatar-4.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
@@ -69,7 +69,7 @@ John Abraham</span>is now following you
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../assets/images/avatar-5.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="{% static 'assets/images/avatar-5.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
@@ -89,24 +89,24 @@ John Abraham</span>is now following you
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/github.png' %}" alt="" > <span>Github</span></a>
+                                            <a href="#" class="connection-item"><img src="{% static 'assets/images/github.png' %}" alt="" > <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/dribbble.png' %}" alt="" > <span>Dribbble</span></a>
+                                            <a href="#" class="connection-item"><img src="{% static 'assets/images/dribbble.png' %}" alt="" > <span>Dribbble</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/dropbox.png' %}" alt="" > <span>Dropbox</span></a>
+                                            <a href="#" class="connection-item"><img src="{% static 'assets/images/dropbox.png' %}" alt="" > <span>Dropbox</span></a>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/bitbucket.png' %}" alt=""> <span>Bitbucket</span></a>
+                                            <a href="#" class="connection-item"><img src="{% static 'assets/images/bitbucket.png' %}" alt=""> <span>Bitbucket</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/mail_chimp.png' %}" alt="" ><span>Mail chimp</span></a>
+                                            <a href="#" class="connection-item"><img src="{% static 'assets/images/mail_chimp.png' %}" alt="" ><span>Mail chimp</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../assets/images/slack.png' %}" alt="" > <span>Slack</span></a>
+                                            <a href="#" class="connection-item"><img src="{% static 'assets/images/slack.png' %}" alt="" > <span>Slack</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -116,7 +116,7 @@ John Abraham</span>is now following you
                             </ul>
                         </li>
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/avatar-1.jpg' %}" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'assets/images/avatar-1.jpg' %}" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">
@@ -546,7 +546,7 @@ John Abraham</h5>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <img class="card-img-top img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                     <div class="card-body">
                                         <h3 class="card-title">Card title</h3>
                                         <p class="card-text">Vestibuluimis in faucibus orci luctus et ultrices posuere cubilia Curis ipsum in augue posuere congue.</p>
@@ -556,7 +556,7 @@ John Abraham</h5>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <img class="card-img-top img-fluid p-2" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid p-2" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                     <div class="card-body">
                                         <h3 class="card-title">Card title</h3>
                                         <p class="card-text">Faucibus orci luctus et ultrices lorem posuere cubilia Cuquis ipsum in augue posuere congue.</p>
@@ -570,7 +570,7 @@ John Abraham</h5>
                                         <h3 class="card-title mb-2">Card title</h3>
                                         <h6 class="card-subtitle text-muted">Lorem ipusm dolro sit amet</h6>
                                     </div>
-                                    <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                     <div class="card-body">
                                         <p class="card-text">Luctus et ultrices posuere cubilia Curae Integer quis ipsum in augue posuere congue.</p>
                                         <a href="#" class="card-link">Card link</a>
@@ -583,7 +583,7 @@ John Abraham</h5>
                                     <div class="card-body">
                                         <h3 class="card-title">Card title</h3>
                                         <h6 class="card-subtitle text-muted mb-3">Lorem ipusm dolro sit amet</h6>
-                                        <img class="img-fluid mb-4" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                        <img class="img-fluid mb-4" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                         <p class="card-text">Ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae Integer quis ipsum.</p>
                                         <a href="#" class="card-link">Card link</a>
                                         <a href="#" class="card-link">Another link</a>
@@ -592,7 +592,7 @@ John Abraham</h5>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                     <div class="card-body">
                                         <h3 class="card-title">Card title</h3>
                                         <p class="card-text">Faucibus orci luctus et ultrices posuere cubilia Curae Integer quis ipsum in augue posuere congue.</p>
@@ -607,12 +607,12 @@ John Abraham</h5>
                                         <p class="card-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer quis ipsum in augue posuere congue.</p>
                                         <p class="text-muted">Last updated 3 mins ago</p>
                                     </div>
-                                    <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="card text-white">
-                                    <img class="card-img" src="../assets/images/card-img.jpg' %}" alt="Card image">
+                                    <img class="card-img" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image">
                                     <div class="card-img-overlay">
                                         <h3 class="card-title  text-white">Card title</h3>
                                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -963,7 +963,7 @@ John Abraham</h5>
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card-columns">
                                     <div class="card">
-                                        <img class="card-img-top" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                        <img class="card-img-top" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                         <div class="card-body">
                                             <h3 class="card-title">Card title that wraps to a new line</h3>
                                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -978,7 +978,7 @@ John Abraham</h5>
                                         </blockquote>
                                     </div>
                                     <div class="card">
-                                        <img class="card-img-top" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                        <img class="card-img-top" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                         <div class="card-body">
                                             <h3 class="card-title">Card title</h3>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -1001,7 +1001,7 @@ John Abraham</h5>
                                         </div>
                                     </div>
                                     <div class="card">
-                                        <img class="card-img" src="../assets/images/card-img.jpg' %}" alt="Card image">
+                                        <img class="card-img" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image">
                                     </div>
                                     <div class="card p-3 text-right">
                                         <blockquote class="blockquote mb-0">
@@ -1036,7 +1036,7 @@ John Abraham</h5>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                     <div class="card-body">
                                         <h3 class="card-title">Kitchen Sink</h3>
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -1067,7 +1067,7 @@ John Abraham</h5>
                                         <a href="#" class="card-link">Card link</a>
                                         <a href="#" class="card-link">Another link</a>
                                     </div>
-                                    <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                    <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-12 col-md-6 col-sm-12 col-12">
@@ -1117,7 +1117,7 @@ John Abraham</h5>
                                 <div class="card card-figure">
                                     <!-- .card-figure -->
                                     <figure class="figure">
-                                        <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                        <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                         <!-- .figure-caption -->
                                         <figcaption class="figure-caption">
                                             <h6 class="figure-title"> Simple figure </h6>
@@ -1136,7 +1136,7 @@ John Abraham</h5>
                                 <div class="card card-figure has-hoverable">
                                     <!-- .card-figure -->
                                     <figure class="figure">
-                                        <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                        <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                         <!-- .figure-caption -->
                                         <figcaption class="figure-caption">
                                             <h6 class="figure-title"> Hoverable figure </h6>
@@ -1155,7 +1155,7 @@ John Abraham</h5>
                                 <div class="card card-figure">
                                     <!-- .card-figure -->
                                     <figure class="figure">
-                                        <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                        <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                         <!-- .figure-caption -->
                                         <figcaption class="figure-caption">
                                             <h6 class="figure-title"><a href="#">Clickable title</a> </h6>
@@ -1176,7 +1176,7 @@ John Abraham</h5>
                                     <figure class="figure">
                                         <!-- .figure-img -->
                                         <div class="figure-img">
-                                            <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                            <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                             <a href="#" class="img-link">
                                                 <div class="tile tile-circle ">
                                                     <span><i class="fas fa-circle text-primary fa-2x"></i></span>
@@ -1204,7 +1204,7 @@ John Abraham</h5>
                                     <figure class="figure">
                                         <!-- .figure-img -->
                                         <div class="figure-img">
-                                            <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                            <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                             <div class="figure-action">
                                                 <a href="#" class="btn btn-block btn-sm btn-primary">Quick Action</a>
                                             </div>
@@ -1230,7 +1230,7 @@ John Abraham</h5>
                                     <figure class="figure">
                                         <!-- .figure-img -->
                                         <div class="figure-img">
-                                            <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                            <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                             <div class="figure-tools">
                                                 <a href="#" class="tile tile-circle tile-sm mr-auto">
                                                                 <span class="oi-data-transfer-download"></span></a>
@@ -1261,7 +1261,7 @@ John Abraham</h5>
                                     <figure class="figure">
                                         <!-- .figure-img -->
                                         <div class="figure-img">
-                                            <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                            <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                             <div class="figure-description">
                                                 <h6 class="figure-title"> Figure description </h6>
                                                 <p class="text-muted mb-0">
@@ -1300,7 +1300,7 @@ John Abraham</h5>
                                     <figure class="figure">
                                         <!-- .figure-img -->
                                         <div class="figure-img">
-                                            <img class="img-fluid" src="../assets/images/card-img.jpg' %}" alt="Card image cap">
+                                            <img class="img-fluid" src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap">
                                             <div class="figure-description">
                                                 <h6 class="figure-title"> Long title text can be place here </h6>
                                                 <p class="text-muted mb-0">
@@ -1341,7 +1341,7 @@ John Abraham</h5>
                                                 <li class="list-inline-item text-truncate mr-auto">
                                                     <span><i class="fas fa-file-pdf"></i></span> Attachment.pdf </li>
                                                 <li class="list-inline-item">
-                                                    <a download href="../assets/images/card-img-1.jpg' %}">
+                                                    <a download href="{% static 'assets//images/card-img-1.jpg' %}">
 
 
                                                         <i class="fas fa-download "></i></a>
@@ -1362,13 +1362,13 @@ John Abraham</h5>
                                     <figure class="figure">
                                         <!-- .figure-img -->
                                         <div class="figure-attachment">
-                                            <img src="../assets/images/card-img.jpg' %}" alt="Card image cap" class="img-fluid"> </div>
+                                            <img src="{% static 'assets/images/card-img.jpg' %}" alt="Card image cap" class="img-fluid"> </div>
                                         <!-- /.figure-img -->
                                         <figcaption class="figure-caption">
                                             <ul class="list-inline d-flex text-muted mb-0">
                                                 <li class="list-inline-item text-truncate mr-auto">Image attachment </li>
                                                  <li class="list-inline-item">
-                                                        <a href="../assets/images/card-img-1.jpg' %}" download>  <span><i class="fas fa-download "></i></span></a>
+                                                        <a href="{% static 'assets//images/card-img-1.jpg' %}" download>  <span><i class="fas fa-download "></i></span></a>
                                                     </li>
                                                     <li class="list-inline-item">
                                                         <a href="#" class="btn btn-reset text-muted" title="More actions">
@@ -1441,9 +1441,9 @@ John Abraham</h5>
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
-    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js></script>
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
     <script src='../assets/libs/js/main-js.js'></script>
    
 </body>
