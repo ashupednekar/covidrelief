@@ -4,7 +4,8 @@ from localusers.serializers import *
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-
+from rest_framework.response import Response
+from rest_framework import status
 
 class EntryView(
     generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,
@@ -86,12 +87,12 @@ class CenterView(
 def get_current_entries(request):
     if request.user.role == 'admin':
         entries = Entries.objects.filter(closed='N')
-        return list(entries.values())
+        return Response(list(entries.values()), status=status.HTTP_200_OK)
     elif request.user.role == 'manager':
         entries = Entries.objects.filter(closed='N', center=request.user.center)
-        return list(entries.values())
+        return Response(list(entries.values()), status=status.HTTP_200_OK)
     else:
-        raise NotImplementedError
+        return Response({'messsage': 'Invalid Role'})
 
 
 @api_view(['GET'])
@@ -99,10 +100,9 @@ def get_current_entries(request):
 def get_closed_entries(request):
     if request.user.role == 'admin':
         entries = Entries.objects.filter(closed='Y')
-        return list(entries.values())
+        return Response(list(entries.values()), status=status.HTTP_200_OK)
     elif request.user.role == 'manager':
         entries = Entries.objects.filter(closed='Y', center=request.user.center)
-        return list(entries.values())
+        return Response(list(entries.values()), status=status.HTTP_200_OK)
     else:
-        raise NotImplementedError
-
+        return Response({'messsage': 'Invalid Role'})
