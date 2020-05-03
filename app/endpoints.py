@@ -1,6 +1,31 @@
 from rest_framework import generics, mixins
 from .serializers import *
+from localusers.serializers import *
 
+
+class UserView(
+    generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,
+    mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin
+    ):
+
+    queryset = LocalUser.objects.all()
+    serializer_class = LocalUserSerializer
+    lookup_field = 'username'
+
+    def post(self, request):
+        return self.create(request)
+
+    def get(self, request, username=None):
+        if username:
+            return self.retrieve(request, username)
+        else:
+            return self.list(request)
+
+    def put(self, request, username=None):
+        return self.update(request, username)
+
+    def delete(self, request, username=None):
+        return self.destroy(request, username)
 
 class CenterView(
     generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,

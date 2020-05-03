@@ -24,3 +24,10 @@ def centers(request):
     return render(request, 'frontend/centers.html', {
         'host': SERVER_HOST
     })
+
+
+@login_required
+def assign(request):
+    return render(request, 'frontend/assign.html', {
+        'host': SERVER_HOST
+    })
