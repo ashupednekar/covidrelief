@@ -73,12 +73,10 @@
                             function loadtable(){
                                 jQuery.ajax({
                                         "method": "GET",
-                                        "url": "{{ host }}/entryview",
+                                        "url": "{{ host }}/getcurrententries",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
-                                        console.log('jfbkfjn', res1);
                                         for(var i=0; i<res1.length; i++){
-                                            console.log('LUFFY: ',res1[i])
                                             jQuery('#table_body').append(
                                                 "<tr>" +
                                                 "<td>"+(i+1).toString()+"</td>" +
