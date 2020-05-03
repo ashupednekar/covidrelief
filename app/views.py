@@ -5,6 +5,7 @@ from covidrelief.settings import SERVER_HOST
 
 from localusers.models import LocalUser
 from app.models import Centers
+from django.http import HttpResponse
 
 
 """RENDER VIEWS"""
@@ -25,9 +26,12 @@ def index(request):
 
 @login_required
 def centers(request):
-    return render(request, 'frontend/centers.html', {
-        'host': SERVER_HOST
-    })
+    if request.user.role == 'admin':
+        return render(request, 'frontend/centers.html', {
+            'host': SERVER_HOST
+        })
+    else:
+        return HttpResponse('Invalid role')
 
 @login_required
 def entries(request):
@@ -37,13 +41,19 @@ def entries(request):
 
 @login_required
 def closed(request):
-    return render(request, 'frontend/closed.html', {
-        'host': SERVER_HOST
-    })
+    if request.user.role in ['admin', 'manager']:
+        return render(request, 'frontend/closed.html', {
+            'host': SERVER_HOST
+        })
+    else:
+        return HttpResponse('Invalid Role')
 
 
 @login_required
 def assign(request):
-    return render(request, 'frontend/assign.html', {
-        'host': SERVER_HOST
-    })
+    if request.user.role == 'admin':
+        return render(request, 'frontend/assign.html', {
+            'host': SERVER_HOST
+        })
+    else:
+        return HttpResponse('Invalid Role')
