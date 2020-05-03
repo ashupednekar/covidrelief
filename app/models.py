@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+
+class Centers(models.Model):
+    center_name = models.TextField(null=True, blank=True)

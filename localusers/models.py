@@ -9,4 +9,5 @@ class LocalUser(AbstractUser, models.Model):
     card_no = models.CharField(max_length=500, blank=True, null=True, unique=True)
     status = models.CharField(max_length=500, blank=True, null=True)
     disabled = models.CharField(max_length=500, blank=True, null=True)
+    center = models.CharField(max_length=500, blank=True, null=True, default='unassigned')
     timestamp = models.DateField(auto_now=True)

@@ -153,3 +153,8 @@ ACCOUNT_LOGIN_ATTEMPTS_LIMIT= 3
 ACCOUNT_LOGOUT_ON_GET = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+#CONFIG
+
+SERVER_HOST = 'http://localhost:8000'
