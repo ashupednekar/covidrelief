@@ -26,12 +26,37 @@
                     <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Add a new center</h5>
+                                    <h5 class="card-header">Add a new data entry</h5>
                                     <div class="card-body">
                                         <form>
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Input Center Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <label for="name" class="col-form-label">Name</label>
+                                                <input id="name" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mobile" class="col-form-label">Mobile No</label>
+                                                <input id="mobile" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="landmark" class="col-form-label">Landmark</label>
+                                                <input id="landmark" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label class="col-form-label">Choose center</label>
+                                                        <select class="choosecenter" name="state3" style="width: 100%;">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="address" class="col-form-label">Address</label>
+                                                <textarea id="address" type="text" class="form-control"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="remarks" class="col-form-label">Remarks</label>
+                                                <textarea id="remarks" type="text" class="form-control"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-success" id="done"><i class="fa fa-save"></i></button>
@@ -43,18 +68,26 @@
                         </div>
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
                         <script>
                             function loadtable(){
                                 jQuery.ajax({
-                                    "method": "GET",
-                                    "url": "{{ host }}/centerview",
-                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                    "success": function (res) {
-                                        for(var i=1; i<res.length+1; i++){
+                                        "method": "GET",
+                                        "url": "{{ host }}/entryview",
+                                        "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                        "success": function (res1) {
+                                        console.log('jfbkfjn', res1);
+                                        for(var i=0; i<res1.length; i++){
+                                            console.log('LUFFY: ',res1[i])
                                             jQuery('#table_body').append(
                                                 "<tr>" +
-                                                "<td>"+i.toString()+"</td>" +
-                                                "<td>"+res[i]['center_name']+"</td>" +
+                                                "<td>"+(i+1).toString()+"</td>" +
+                                                "<td>"+res1[i]['name']+"</td>" +
+                                                "<td>"+res1[i]['mobile']+"</td>" +
+                                                "<td>"+res1[i]['address']+"</td>" +
+                                                "<td>"+res1[i]['landmark']+"</td>" +
+                                                "<td>"+res1[i]['center']+"</td>" +
+                                                "<td>"+res1[i]['remark']+"</td>" +
                                                 "<td></td>" +
                                                 "</tr>"
                                             )
@@ -64,14 +97,40 @@
                             }
                             jQuery(document).ready(function () {
                                 loadtable();
+                                jQuery('.choosecenter').select2();
+                                jQuery.ajax({
+                                    "method": "GET",
+                                    "url": "{{ host }}/centerview",
+                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                    "success": function (res) {
+                                        for(var i=1; i<res.length+1; i++){
+                                            console.log(res[i]);
+                                            jQuery('.choosecenter').append(
+                                                "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
+                                            )
+                                        }
+                                    }
+                                });
                             });
                             jQuery('#done').on('click', function (event) {
                                 event.preventDefault()
                                 var data = new FormData();
-                                data.append('center_name', $('#inputText3').val())
+                                data.append('name', $('#name').val())
+                                if($('#mobile').val().length != 10){
+                                    Swal.fire(
+                                        'error',
+                                        'Invalid Mobile No!'
+                                    );
+                                }else{
+                                    data.append('mobile', $('#mobile').val())
+                                }
+                                data.append('landmark', $('#landmark').val())
+                                data.append('center', $('.choosecenter').val())
+                                data.append('address', $('#address').val())
+                                data.append('remark', $('#remarks').val())
                                 jQuery.ajax({
                                        "method": "POST",
-                                       "url": "{{ host }}/centerview",
+                                       "url": "{{ host }}/entryview",
                                        "data": data,
                                        "processData": false,
                                        "contentType": false,
@@ -100,9 +159,10 @@
                     <!-- fixed header  -->
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        {% if request.user.role == 'admin' or request.user.role == 'manager' %}
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">View Centers</h5>
+                                <h5 class="mb-0">View Entries</h5>
                                 <p>some message here...</p>
                             </div>
                             <div class="card-body">
@@ -111,7 +171,12 @@
                                         <thead>
                                             <tr>
                                                 <th>Sr.no</th>
-                                                <th>center Name</th>
+                                                <th>Name</th>
+                                                <th>Mobile No</th>
+                                                <th>Address</th>
+                                                <th>Landmark</th>
+                                                <th>Center</th>
+                                                <th>Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -120,7 +185,12 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Sr.no</th>
-                                                <th>center Name</th>
+                                                <th>Name</th>
+                                                <th>Mobile No</th>
+                                                <th>Address</th>
+                                                <th>Landmark</th>
+                                                <th>Center</th>
+                                                <th>Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
@@ -128,6 +198,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                     <!-- ============================================================== -->
                     <!-- end basic table  -->

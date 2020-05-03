@@ -23,11 +23,11 @@ class EntrySerializer(ModelSerializer):
             'date_received',
             'date_closed'
         )
-        extra_kwargs = {
-            'pin': {
-                'validators': [
-                    numeric_mobile_validator,
-                    mobile_length_validator
-                ]
-            }
-        }
+        # extra_kwargs = {
+        #     'mobile': {
+        #         'validators': [
+        #             numeric_mobile_validator,
+        #             mobile_length_validator
+        #         ]
+        #     }
+        # }

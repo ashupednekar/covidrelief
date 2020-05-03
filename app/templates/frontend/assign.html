@@ -68,11 +68,11 @@
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         jQuery('#table_body').html('');
-                                        for(var i=1; i<res.length+1; i++){
+                                        for(var i=0; i<res.length; i++){
                                             console.log(res[i]);
                                             jQuery('#table_body').append(
                                                 "<tr>" +
-                                                "<td>"+i.toString()+"</td>" +
+                                                "<td>"+(i+1).toString()+"</td>" +
                                                 "<td>"+res[i]['username']+"</td>" +
                                                 "<td>"+res[i]['center']+"</td>" +
                                                 "<td></td>" +

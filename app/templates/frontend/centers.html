@@ -50,10 +50,10 @@
                                     "url": "{{ host }}/centerview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
-                                        for(var i=1; i<res.length+1; i++){
+                                        for(var i=0; i<res.length; i++){
                                             jQuery('#table_body').append(
                                                 "<tr>" +
-                                                "<td>"+i.toString()+"</td>" +
+                                                "<td>"+(i+1).toString()+"</td>" +
                                                 "<td>"+res[i]['center_name']+"</td>" +
                                                 "<td></td>" +
                                                 "</tr>"
