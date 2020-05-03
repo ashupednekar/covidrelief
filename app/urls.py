@@ -14,6 +14,8 @@ urlpatterns = [
     path('centerview/<str:center_name>', CenterView.as_view(), name='center_view'),
     path('userview', UserView.as_view(), name='center_view'),
     path('userview/<str:username>', UserView.as_view(), name='center_view'),
+    path('entryview', EntryView.as_view(), name='center_view'),
+    path('entryview/<str:mobile>', EntryView.as_view(), name='center_view'),
 ]
 
 initialize_centers()

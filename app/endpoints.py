@@ -3,6 +3,31 @@ from .serializers import *
 from localusers.serializers import *
 
 
+class EntryView(
+    generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,
+    mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin
+    ):
+
+    queryset = Entries.objects.all()
+    serializer_class = EntrySerializer
+    lookup_field = 'mobile'
+
+    def post(self, request):
+        return self.create(request)
+
+    def get(self, request, mobile=None):
+        if mobile:
+            return self.retrieve(request, mobile)
+        else:
+            return self.list(request)
+
+    def put(self, request, mobile=None):
+        return self.update(request, mobile)
+
+    def delete(self, request, mobile=None):
+        return self.destroy(request, username)
+
+
 class UserView(
     generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,
     mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin
@@ -26,6 +51,7 @@ class UserView(
 
     def delete(self, request, username=None):
         return self.destroy(request, username)
+
 
 class CenterView(
     generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPIView, generics.UpdateAPIView, generics.RetrieveAPIView,
