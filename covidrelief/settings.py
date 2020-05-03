@@ -167,4 +167,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #CONFIG
 
-SERVER_HOST = 'http://localhost:8000'
+SERVER_HOST = 'http://3.7.102.76:8443'
+# SERVER_HOST = 'http://localhost:8000'
