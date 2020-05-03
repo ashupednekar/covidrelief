@@ -1,0 +1,189 @@
+{% extends "frontend/base.html" %}
+
+{% load static %}
+
+{% block page %}
+            <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Users</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Assign centers</a></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Assign center to users</h5>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label for="inputText3" class="col-form-label">Input Center Name</label>
+                                                            <select class="chooseuser" name="state1" style="width: 100%;">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label for="inputText3" class="col-form-label">Input Center Name</label>
+                                                            <select class="choosecenter" name="state2" style="width: 100%;">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button class="btn btn-success" id="done"><i class="fa fa-save"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+                        <script>
+                            function loadtable(){
+                                jQuery.ajax({
+                                    "method": "GET",
+                                    "url": "{{ host }}/userview",
+                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                    "success": function (res) {
+                                        jQuery('#table_body').html('');
+                                        for(var i=1; i<res.length+1; i++){
+                                            console.log(res[i]);
+                                            jQuery('#table_body').append(
+                                                "<tr>" +
+                                                "<td>"+i.toString()+"</td>" +
+                                                "<td>"+res[i]['username']+"</td>" +
+                                                "<td>"+res[i]['center']+"</td>" +
+                                                "<td></td>" +
+                                                "</tr>"
+                                            )
+                                        }
+                                    }
+                                });
+                            }
+                            jQuery(document).ready(function () {
+                                jQuery('.chooseuser').select2();
+                                jQuery.ajax({
+                                    "method": "GET",
+                                    "url": "{{ host }}/userview",
+                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                    "success": function (res) {
+                                        for(var i=1; i<res.length+1; i++){
+                                            console.log(res[i]);
+                                            jQuery('.chooseuser').append(
+                                                "<option value='"+res[i]['username']+"'>"+res[i]['username']+"</option>"
+                                            );
+                                        }
+                                    }
+                                });
+                                jQuery('.choosecenter').select2();
+                                jQuery.ajax({
+                                    "method": "GET",
+                                    "url": "{{ host }}/centerview",
+                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                    "success": function (res) {
+                                        for(var i=1; i<res.length+1; i++){
+                                            console.log(res[i]);
+                                            jQuery('.choosecenter').append(
+                                                "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
+                                            )
+                                        }
+                                    }
+                                });
+                                loadtable();
+                            });
+                            jQuery('#done').on('click', function (event) {
+                                event.preventDefault()
+                                var data = new FormData();
+                                data.append('username', "{{ request.user }}");
+                                data.append('center', $('.choosecenter').val())
+                                jQuery.ajax({
+                                       "method": "PUT",
+                                       "url": "{{ host }}/userview/"+jQuery('.chooseuser').val(),
+                                       "data": data,
+                                       "processData": false,
+                                       "contentType": false,
+                                       "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                       "success": function (res) {
+                                            loadtable();
+                                            Swal.fire(
+                                                  'Success!',
+                                                  'Center added successfully!',
+                                                  'success'
+                                            );
+                                       },
+                                       "error": function (e) {
+                                            Swal.fire(
+                                                'error',
+                                                'Error!'
+                                            )
+                                       }
+                                });
+                            });
+                        </script>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- fixed header  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">View Users</h5>
+                                <p>some message here...</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example4" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr.no</th>
+                                                <th>user name</th>
+                                                <th>center assigned</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_body">
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Sr.no</th>
+                                                <th>user name</th>
+                                                <th>center assigned</th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end basic table  -->
+                    <!-- ============================================================== -->
+                </div>
+                </div>
+            </div>
+{% endblock %}

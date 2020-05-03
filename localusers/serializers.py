@@ -5,6 +5,11 @@ from .models import *
 
 class LocalUserSerializer(serializers.ModelSerializer):
 
+    def __init__(self, *args, **kwargs):
+        super(LocalUserSerializer, self).__init__(*args, **kwargs)
+        if self.context['request'].method == "PUT":
+            self.fields.pop('password')
+
     class Meta:
         model = LocalUser
-        fields = ('id', 'username', 'full_name', 'language', 'flag', 'no_of_concats', 'type', 'role', 'skills', 'group', 'status', 'disabled', 'filename', 'disabled', 'email', 'password')
+        fields = ('id', 'username', 'full_name', 'status', 'disabled', 'disabled', 'email', 'password', 'center')

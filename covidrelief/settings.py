@@ -71,7 +71,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 TEMPLATES = [
@@ -110,7 +110,7 @@ DATABASES = {
         'NAME': 'covidrelief',
         'USER': 'postgres',
         'PASSWORD': 'help',
-        'HOST': 'localhost',
+        'HOST': '3.7.102.76',
         'PORT': '5432',
     }
 }
@@ -167,5 +167,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #CONFIG
 
-SERVER_HOST = 'http://3.7.102.76:8443'
+SERVER_HOST = 'https://www.help-lko.xyz/'
+# SERVER_HOST = 'http://3.7.102.76:8443'
 # SERVER_HOST = 'http://localhost:8000'
