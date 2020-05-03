@@ -12,12 +12,16 @@ from app.models import Centers
 
 @login_required
 def index(request):
-    data = dict(LocalUser.objects.filter(username=request.user).values()[0])
-    return render(request, 'frontend/home.html', {
-        'data': data,
-        'host': SERVER_HOST
-    })
-
+    if request.user.role != 'operator':
+        data = dict(LocalUser.objects.filter(username=request.user).values()[0])
+        return render(request, 'frontend/home.html', {
+            'data': data,
+            'host': SERVER_HOST
+        })
+    else:
+        return render(request, 'frontend/entries.html', {
+            'host': SERVER_HOST
+        })
 
 @login_required
 def centers(request):
