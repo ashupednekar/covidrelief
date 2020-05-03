@@ -101,7 +101,7 @@
                                     "url": "{{ host }}/centerview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
-                                        for(var i=1; i<res.length+1; i++){
+                                        for(var i=0; i<res.length; i++){
                                             console.log(res[i]);
                                             jQuery('.choosecenter').append(
                                                 "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
