@@ -16,7 +16,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Entries</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Manage entries</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">closed entries</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -64,7 +64,7 @@
                         {% if request.user.role == 'admin' or request.user.role == 'manager' %}
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">View Entries</h5>
+                                <h5 class="mb-0">View Closed Entries</h5>
                                 <p>some message here...</p>
                             </div>
                             <div class="card-body">
