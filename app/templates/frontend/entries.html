@@ -111,45 +111,44 @@
                                 });
                             });
                             jQuery('#done').on('click', function (event) {
-                                event.preventDefault()
-                                var data = new FormData();
-                                data.append('name', $('#name').val())
                                 if($('#mobile').val().length != 10){
                                     Swal.fire(
                                         'error',
                                         'Invalid Mobile No!'
                                     );
-                                }else{
+                                }else {
+                                    event.preventDefault()
+                                    var data = new FormData();
+                                    data.append('name', $('#name').val())
                                     data.append('mobile', $('#mobile').val())
-                                    return
-                                }
-                                data.append('landmark', $('#landmark').val())
-                                data.append('center', $('.choosecenter').val())
-                                data.append('address', $('#address').val())
-                                data.append('remark', $('#remarks').val())
-                                jQuery.ajax({
-                                       "method": "POST",
-                                       "url": "{{ host }}/entryview",
-                                       "data": data,
-                                       "processData": false,
-                                       "contentType": false,
-                                       "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                       "success": function (res) {
+                                    data.append('landmark', $('#landmark').val())
+                                    data.append('center', $('.choosecenter').val())
+                                    data.append('address', $('#address').val())
+                                    data.append('remark', $('#remarks').val())
+                                    jQuery.ajax({
+                                        "method": "POST",
+                                        "url": "{{ host }}/entryview",
+                                        "data": data,
+                                        "processData": false,
+                                        "contentType": false,
+                                        "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                        "success": function (res) {
                                             loadtable();
                                             Swal.fire(
-                                                  'Success!',
-                                                  'Center added successfully!',
-                                                  'success'
+                                                'Success!',
+                                                'Center added successfully!',
+                                                'success'
                                             );
-                                       },
-                                       "error": function (e) {
+                                        },
+                                        "error": function (e) {
                                             Swal.fire(
                                                 'error',
                                                 'Error!'
                                             )
-                                       }
+                                        }
+                                    });
+                                }
                                 });
-                            });
                         </script>
                     <!-- ============================================================== -->
                     <!-- end pageheader  -->
