@@ -34,18 +34,35 @@
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
                                         for(var i=0; i<res1.length; i++){
-                                            jQuery('#table_body').append(
-                                                "<tr>" +
-                                                "<td>"+(i+1).toString()+"</td>" +
-                                                "<td>"+res1[i]['name']+"</td>" +
-                                                "<td>"+res1[i]['mobile']+"</td>" +
-                                                "<td>"+res1[i]['address']+"</td>" +
-                                                "<td>"+res1[i]['landmark']+"</td>" +
-                                                "<td>"+res1[i]['center']+"</td>" +
-                                                "<td>"+res1[i]['remark']+"</td>" +
-                                                "<td></td>" +
-                                                "</tr>"
-                                            )
+                                            if(res1[i]['closed'] == 'Y') {
+                                                jQuery('#table_body').append(
+                                                    "<tr>" +
+                                                    "<td>" + (i + 1).toString() + "</td>" +
+                                                    "<td>" + res1[i]['name'] + "</td>" +
+                                                    "<td>" + res1[i]['mobile'] + "</td>" +
+                                                    "<td>" + res1[i]['address'] + "</td>" +
+                                                    "<td>" + res1[i]['landmark'] + "</td>" +
+                                                    "<td>" + res1[i]['center'] + "</td>" +
+                                                    "<td>" + res1[i]['remark'] + "</td>" +
+                                                    "<td>Done</td>" +
+                                                    "<td></td>" +
+                                                    "</tr>"
+                                                );
+                                            }else{
+                                                jQuery('#table_body').append(
+                                                    "<tr>" +
+                                                    "<td>"+(i+1).toString()+"</td>" +
+                                                    "<td>"+res1[i]['name']+"</td>" +
+                                                    "<td>"+res1[i]['mobile']+"</td>" +
+                                                    "<td>"+res1[i]['address']+"</td>" +
+                                                    "<td>"+res1[i]['landmark']+"</td>" +
+                                                    "<td>"+res1[i]['center']+"</td>" +
+                                                    "<td>"+res1[i]['remark']+"</td>" +
+                                                    "<td>Pending</td>" +
+                                                    "<td></td>" +
+                                                    "</tr>"
+                                                );
+                                            }
                                         }
                                     }
                                 });
