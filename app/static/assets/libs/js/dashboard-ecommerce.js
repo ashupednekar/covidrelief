@@ -7,17 +7,16 @@
         // ============================================================== 
 
         new Chartist.Bar('.ct-chart-product', {
-            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            labels: ['1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr'],
             series: [
-                [800000, 1200000, 1400000, 1300000],
-                [200000, 400000, 500000, 300000],
-                [100000, 200000, 400000, 600000]
+                [80, 12, 14, 13, 80, 120, 140, 13, 80, 120, 10, 130, 80, 12],
+                [20, 400, 50, 30, 20, 40, 5, 30, 2, 4, 50, 30, 20, 40]
             ]
         }, {
             stackBars: true,
             axisY: {
                 labelInterpolationFnc: function(value) {
-                    return (value / 1000) + 'k';
+                    return (value);
                 }
             }
         }).on('draw', function(data) {
