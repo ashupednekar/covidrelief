@@ -95,7 +95,30 @@
                                         </div>
                                         <script>
                                             function markasdone() {
-                                                alert(jQuery('.choosedelivery').val());
+                                                var data = new FormData();
+                                                data.append('tomark', jQuery('.choosedelivery').val())
+                                                jQuery.ajax({
+                                                    "method": "POST",
+                                                    "url": "{{ host }}/markasdone",
+                                                    "data": data,
+                                                    "processData": false,
+                                                    "contentType": false,
+                                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                                    "success": function (res) {
+                                                        loadtable();
+                                                        Swal.fire(
+                                                            'Success!',
+                                                            'Center added successfully!',
+                                                            'success'
+                                                        );
+                                                    },
+                                                    "error": function (e) {
+                                                        Swal.fire(
+                                                            'error',
+                                                            'Error!'
+                                                        )
+                                                    }
+                                                });
                                             }
                                         </script>
                                     </div>

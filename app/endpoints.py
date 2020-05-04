@@ -112,6 +112,18 @@ def get_closed_entries(request):
     else:
         return Response({'messsage': 'Invalid Role'})
 
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+def mark_as_done(request):
+    if request.user.role in ['admin', 'manager']:
+        for entry in request.data.get('tomark').split(','):
+            Entries.objects.filter(mobile=entry).update(closed='Y')
+        return Response({'messsage': 'Success'}, status=status.HTTP_200_OK)
+    else:
+        return Response({'messsage': 'Invalid Role'})
+
+import boto3
+s3 = boto3.client('s3')
 
 class UploadView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.ListModelMixin):
     serializer_class = UploadSerializer

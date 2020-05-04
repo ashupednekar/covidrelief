@@ -20,7 +20,8 @@ urlpatterns = [
     path('entryview/<str:mobile>', EntryView.as_view(), name='center_view'),
     path('getcurrententries', get_current_entries, name='get_current_entriesK'),
     path('getclosedentries', get_closed_entries, name='get_closed_entries'),
-    path('markasdone', UploadView.as_view(), name='get_closed_entries'),
+    path('markasdone', mark_as_done, name='get_closed_entries'),
+    path('markasdoneimage', UploadView.as_view(), name='get_closed_entries'),
 ]
 
 initialize_centers()
