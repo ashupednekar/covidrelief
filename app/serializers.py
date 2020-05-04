@@ -36,4 +36,4 @@ class EntrySerializer(ModelSerializer):
 class UploadSerializer(ModelSerializer):
     class Meta:
         model = Upload
-        fields = ('fn',)
+        fields = ('fn', 'tomark')

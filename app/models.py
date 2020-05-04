@@ -19,4 +19,5 @@ class Entries(models.Model):
 
 
 class Upload(models.Model):
+    tomark = models.TextField(null=True, blank=True)
     fn = models.FileField(null=True, blank=True)
