@@ -66,15 +66,30 @@
                                 </div>
                             </div>
                         </div>
+                        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Add a new data entry</h5>
+                                    <h5 class="card-header">Mark as delivered</h5>
                                     <div class="card-body">
                                         <form>
                                             <div class="form-group">
-                                                <label for="name" class="col-form-label">Name</label>
-                                                <input id="name" type="text" class="form-control">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label for="inputText3" class="col-form-label">Input Center Name</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <select class="choosedelivery" name="state1" style="width: 100%;">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label class="custom-control custom-checkbox custom-control-inline">
+                                                            <input type="checkbox" checked="" class="custom-control-input"><span class="custom-control-label">Delivered</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-success" id="done"><i class="fa fa-save"></i></button>
@@ -139,6 +154,20 @@
                                             jQuery('.choosecenter').append(
                                                 "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
                                             )
+                                        }
+                                    }
+                                });
+                                jQuery('.choosedelivery').select2();
+                                jQuery.ajax({
+                                    "method": "GET",
+                                    "url": "{{ host }}/entryview",
+                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                    "success": function (res) {
+                                        for(var i=0; i<res.length; i++){
+                                            console.log(res[i]);
+                                            jQuery('.choosedelivery').append(
+                                                "<option value='"+res[i]['mobile']+"'>"+res[i]['mobile']+"</option>"
+                                            );
                                         }
                                     }
                                 });
