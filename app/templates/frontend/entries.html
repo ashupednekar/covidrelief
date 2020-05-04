@@ -59,14 +59,8 @@
                                                 <textarea id="remarks" type="text" class="form-control"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-success" id="mark">Save  <i class="fa fa-save"></i></button>
+                                                <button class="btn btn-success" id="done">Save  <i class="fa fa-save"></i></button>
                                             </div>
-                                            <script>
-                                                jQuery('#mark').on('click',function (event) {
-                                                    event.preventDefault();
-                                                    alert(jQuery('.choosedelivery').val());
-                                                });
-                                            </script>
                                         </form>
                                     </div>
                                 </div>
@@ -98,8 +92,14 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-success" id="done"> Updata   <i class="fa fa-save"></i></button>
+                                                <button class="btn btn-success" id="mark"> Update   <i class="fa fa-save"></i></button>
                                             </div>
+                                            <script>
+                                                jQuery('#mark').on('click',function (event) {
+                                                    event.preventDefault();
+                                                    alert(jQuery('.choosedelivery').val());
+                                                });
+                                            </script>
                                         </form>
                                     </div>
                                 </div>
