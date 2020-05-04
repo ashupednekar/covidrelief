@@ -91,12 +91,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <button class="btn btn-success" id="mark"> Update   <i class="fa fa-save"></i></button>
+                                            <button class="btn btn-success" onclick="markasdone()"> Update   <i class="fa fa-save"></i></button>
                                         </div>
                                         <script>
-                                            jQuery('#mark').on('click',function() {
+                                            function markasdone() {
                                                 alert(jQuery('.choosedelivery').val());
-                                            });
+                                            }
                                         </script>
                                     </div>
                                 </div>
