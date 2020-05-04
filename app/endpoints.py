@@ -130,7 +130,7 @@ class UploadView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.ListMo
             fn = 'img/' + serializer.data['fn'].split('/')[-1]
             s3.upload_file(fn, 'whatsapp-img', 'covidrelief/'+fn, ExtraArgs={'ContentType': "image/png", 'ACL': "public-read"})
             os.system('rm '+ fn)
-            url = 'https://whatsapp-img.s3.amazonaws.com/ocr-media/' + fn
+            url = 'https://whatsapp-img.s3.amazonaws.com/covidrelief/' + fn
             for entry in request.data.get('tomark').split(','):
                 Entries.objects.filter(mobile=entry).update(closed='Y', image=url)
             return Response({"message": "success", "url": url}, status=status.HTTP_200_OK, headers=headers)
