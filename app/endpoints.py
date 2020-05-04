@@ -1,3 +1,5 @@
+import os
+
 from rest_framework import generics, mixins
 from .serializers import *
 from localusers.serializers import *
@@ -107,13 +109,30 @@ def get_closed_entries(request):
     else:
         return Response({'messsage': 'Invalid Role'})
 
-@api_view(['POST'])
-@permission_classes((IsAuthenticated,))
-def mark_as_done(request):
-    if request.user.role in ['admin', 'manager']:
-        for entry in request.data.get('tomark').split(','):
-            Entries.objects.filter(mobile=entry).update(closed='Y')
-        return Response({'messsage': 'Success'}, status=status.HTTP_200_OK)
-    else:
-        return Response({'messsage': 'Invalid Role'})
 
+class UploadView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.ListModelMixin):
+    serializer_class = UploadSerializer
+    queryset = Upload.objects.all()
+
+    def post(self, request):
+        return self.create(request)
+
+    def create(self, request, *args, **kwargs):
+        if request.user.role in ['admin', 'manager']:
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            self.perform_create(serializer)
+            headers = self.get_success_headers(serializer.data)
+            print('DEBUG: ', serializer.data)
+            fn = serializer.data['fn'].split('/')[-1]
+            s3.upload_file(fn, 'whatsapp-img', 'img/'+fn, ExtraArgs={'ContentType': "image/png", 'ACL': "public-read"})
+            os.system('rm '+ fn)
+            url = 'https://whatsapp-img.s3.amazonaws.com/ocr-media/' + fn
+            for entry in request.data.get('tomark').split(','):
+                Entries.objects.filter(mobile=entry).update(closed='Y', image=url)
+            return Response({"message": "success", "url": url}, status=status.HTTP_200_OK, headers=headers)
+        else:
+            return Response({'messsage': 'Invalid Role'})
+
+    def get(self, request):
+        return self.list(request)

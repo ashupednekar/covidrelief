@@ -16,3 +16,7 @@ class Entries(models.Model):
     image = models.URLField(null=True, blank=True)
     date_received = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     date_closed = models.DateTimeField(auto_now=True, null=True, blank=True)
+
+
+class Upload(models.Model):
+    fn = models.FileField(null=True, blank=True)

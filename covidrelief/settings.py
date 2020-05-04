@@ -165,7 +165,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
+MEDIA_ROOT = 'img'
 #CONFIG
 
 CORS_ORIGIN_ALLOW_ALL = True
