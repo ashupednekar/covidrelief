@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label class="custom-control custom-checkbox custom-control-inline">
-                                                            <input type="checkbox" checked="" class="custom-control-input"><span class="custom-control-label">Delivered</span>
+                                                            <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Delivered</span>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -160,7 +160,7 @@
                                 jQuery('.choosedelivery').select2();
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": "{{ host }}/entryview",
+                                    "url": "{{ host }}/get_current_entries",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
