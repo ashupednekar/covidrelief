@@ -87,7 +87,7 @@
                                                     "<td>" + res1[i]['landmark'] + "</td>" +
                                                     "<td>" + res1[i]['center'] + "</td>" +
                                                     "<td>" + res1[i]['remark'] + "</td>" +
-                                                    "<td>Done</td>" +
+                                                    "<td>Done <i class='fa fa-check-circle'></i></td>" +
                                                     "</tr>"
                                                 );
                                             }else{
@@ -100,7 +100,7 @@
                                                     "<td>"+res1[i]['landmark']+"</td>" +
                                                     "<td>"+res1[i]['center']+"</td>" +
                                                     "<td>"+res1[i]['remark']+"</td>" +
-                                                    "<td>Pending</td>" +
+                                                    "<td>Pending <i class='fa fa-warning'></i></td>" +
                                                     "</tr>"
                                                 );
                                             }
@@ -190,6 +190,7 @@
                                                 <th>Landmark</th>
                                                 <th>Center</th>
                                                 <th>Remarks</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody id="table_body">
@@ -203,7 +204,7 @@
                                                 <th>Landmark</th>
                                                 <th>Center</th>
                                                 <th>Remarks</th>
-
+                                                <th>Status</th>
                                             </tr>
                                         </tfoot>
                                     </table>

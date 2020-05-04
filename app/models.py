@@ -13,5 +13,6 @@ class Entries(models.Model):
     center = models.TextField(null=True, blank=True)
     remark = models.TextField(null=True, blank=True)
     closed = models.CharField(max_length=10, default='N')
+    image = models.URLField(null=True, blank=True)
     date_received = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     date_closed = models.DateTimeField(auto_now=True, null=True, blank=True)
