@@ -160,7 +160,7 @@
                                 jQuery('.choosedelivery').select2();
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": "{{ host }}/get_current_entries",
+                                    "url": "{{ host }}/getcurrententries",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
