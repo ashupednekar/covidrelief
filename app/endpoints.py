@@ -49,7 +49,6 @@ class EntryView(
         serializer = self.get_serializer(queryset, many=True)
         res = serializer.data
         res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
-        print(res)
         return Response(res)
 
     def put(self, request, mobile=None):
@@ -117,7 +116,9 @@ def get_current_entries(request):
         return Response(list(entries.values()), status=status.HTTP_200_OK)
     elif request.user.role == 'manager':
         entries = Entries.objects.filter(closed='N', center=request.user.center)
-        return Response(list(entries.values()), status=status.HTTP_200_OK)
+        res = list(entries.values())
+        res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        return Response(res, status=status.HTTP_200_OK)
     else:
         return Response({'messsage': 'Invalid Role'})
 
@@ -130,7 +131,9 @@ def get_closed_entries(request):
         return Response(list(entries.values()), status=status.HTTP_200_OK)
     elif request.user.role == 'manager':
         entries = Entries.objects.filter(closed='Y', center=request.user.center)
-        return Response(list(entries.values()), status=status.HTTP_200_OK)
+        res = list(entries.values())
+        res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        return Response(res, status=status.HTTP_200_OK)
     else:
         return Response({'messsage': 'Invalid Role'})
 
