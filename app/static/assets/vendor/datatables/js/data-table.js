@@ -3,8 +3,8 @@
 //
 // });
 
-function loadtable(){
-
+function loaddatatable(){
+    'use strict';
     if ($("table.first").length) {
 
         $(document).ready(function() {
