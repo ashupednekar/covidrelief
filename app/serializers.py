@@ -13,6 +13,7 @@ class EntrySerializer(ModelSerializer):
     class Meta:
         model = Entries
         fields = (
+            'ward',
             'actor',
             'name',
             'mobile',

@@ -42,6 +42,10 @@
                                                 <input id="landmark" type="text" class="form-control">
                                             </div>
                                             <div class="form-group">
+                                                <label for="ward" class="col-form-label">Ward</label>
+                                                <input id="ward" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <label class="col-form-label">Choose center</label>
@@ -162,6 +166,7 @@
                                                     "<td>" + res1[i]['mobile'] + "</td>" +
                                                     "<td>" + res1[i]['address'] + "</td>" +
                                                     "<td>" + res1[i]['landmark'] + "</td>" +
+                                                    "<td>" + res1[i]['ward'] + "</td>" +
                                                     "<td>" + res1[i]['center'] + "</td>" +
                                                     "<td>" + res1[i]['remark'] + "</td>" +
                                                     "<td>" + res1[i]['actor'] + "</td>" +
@@ -233,6 +238,7 @@
                                     data.append('center', $('.choosecenter').val())
                                     data.append('address', $('#address').val())
                                     data.append('remark', $('#remarks').val())
+                                    data.append('ward', $('#ward').val())
                                     jQuery.ajax({
                                         "method": "POST",
                                         "url": "{{ host }}/entryview",
@@ -281,6 +287,7 @@
                                                 <th>Mobile No</th>
                                                 <th>Address</th>
                                                 <th>Landmark</th>
+                                                <th>Ward</th>
                                                 <th>Center</th>
                                                 <th>Remarks</th>
                                                 <th>Operator</th>
@@ -295,6 +302,7 @@
                                                     <td>{{ x.mobile }}</td>
                                                     <td>{{ x.address }}</td>
                                                     <td>{{ x.landmark }}</td>
+                                                    <td>{{ x.ward }}</td>
                                                     <td>{{ x.center }}</td>
                                                     <td>{{ x.remark }}</td>
                                                     <td>{{ x.actor }}</td>
@@ -309,6 +317,7 @@
                                                 <th>Mobile No</th>
                                                 <th>Address</th>
                                                 <th>Landmark</th>
+                                                <th>Ward</th>
                                                 <th>Center</th>
                                                 <th>Remarks</th>
                                                 <th>Operator</th>
