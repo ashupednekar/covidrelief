@@ -36,7 +36,8 @@ def centers(request):
 @login_required
 def entries(request):
     return render(request, 'frontend/entries.html', {
-        'host': SERVER_HOST
+        'host': SERVER_HOST,
+        'table': [['aaa', 'aaa', 'aaa','aaa','aaa','aaa','aaa','aaa','aaa'], ['aaa', 'aaa', 'aaa','aaa','aaa','bbb','bbb','bbb','bbb']]
     })
 
 @login_required
