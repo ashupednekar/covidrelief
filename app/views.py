@@ -38,7 +38,7 @@ def entries(request):
     valueslist = list(Entries.objects.filter(closed='N').values())
     entrytable = list()
     for x in valueslist:
-        x['data_received'] = x['data_received'].strftime("%m/%d/%Y")
+        x['date_received'] = x['date_received'].strftime("%m/%d/%Y")
         entrytable.append(x)
     print(entrytable)
     return render(request, 'frontend/entries.html', {
