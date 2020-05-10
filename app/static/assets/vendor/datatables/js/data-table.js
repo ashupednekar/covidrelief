@@ -13,6 +13,7 @@ jQuery(document).ready(function($) {
     if ($("table.second").length) {
 
         $(document).ready(function() {
+            loadtable();
             var table = $('table.second').DataTable({
                 lengthChange: false,
                 buttons: ['copy', 'exceprl', 'pdf', 'print', 'colvis']
