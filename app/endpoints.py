@@ -38,11 +38,23 @@ class EntryView(
         else:
             return self.list(request)
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        serializer.data['date_received'] = serializer.data['date_received'].strftime("%m/%d/%Y")
+        return Response(serializer.data)
+
     def put(self, request, mobile=None):
         return self.update(request, mobile)
 
     def delete(self, request, mobile=None):
-        return self.destroy(request, username)
+        return self.destroy(request, mobile)
 
 
 class UserView(
