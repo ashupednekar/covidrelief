@@ -24,6 +24,12 @@ class EntryView(
     def post(self, request):
         return self.create(request)
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.validated_data['actor'] = request.user
+        self.perform_create(serializer)
+
     def get(self, request, mobile=None):
         if mobile:
             return self.retrieve(request, mobile)

@@ -6,6 +6,7 @@ class Centers(models.Model):
 
 
 class Entries(models.Model):
+    actor = models.TextField(null=True, blank=True)
     name = models.TextField(null=True, blank=True)
     mobile = models.TextField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
