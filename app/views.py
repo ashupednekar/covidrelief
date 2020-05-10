@@ -4,7 +4,7 @@ from django.shortcuts import render
 from covidrelief.settings import SERVER_HOST
 
 from localusers.models import LocalUser
-from app.models import Centers
+from app.models import *
 from django.http import HttpResponse
 
 
@@ -35,9 +35,15 @@ def centers(request):
 
 @login_required
 def entries(request):
+    valueslist = list(Entries.objects.filter(closed='N').values())
+    entrytable = list()
+    for x in valueslist:
+        x['data_received'] = x['data_received'].strftime("%m/%d/%Y")
+        entrytable.append(x)
+    print(entrytable)
     return render(request, 'frontend/entries.html', {
         'host': SERVER_HOST,
-        'table': [['aaa', 'aaa', 'aaa','aaa','aaa','aaa','aaa','aaa','aaa'], ['aaa', 'aaa', 'aaa','aaa','aaa','bbb','bbb','bbb','bbb']]
+        'table': entrytable
     })
 
 @login_required

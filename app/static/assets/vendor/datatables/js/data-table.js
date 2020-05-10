@@ -1,10 +1,6 @@
-// jQuery(document).ready(function($) {
-//     'use strict';
-//
-// });
-
-function loaddatatable(){
+jQuery(document).ready(function($) {
     'use strict';
+
     if ($("table.first").length) {
 
         $(document).ready(function() {
@@ -89,43 +85,4 @@ function loaddatatable(){
         });
     }
 
-    jQuery.ajax({
-            "method": "GET",
-            "url": "{{ host }}/getcurrententries",
-            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-            "success": function (res1) {
-            jQuery('#table_body').html('');
-            for(var i=0; i<res1.length; i++){
-                if(res1[i]['closed'] == 'Y') {
-                    jQuery('#table_body').append(
-                        "<tr>" +
-                        "<td>" + (i + 1).toString() + "</td>" +
-                        "<td>" + res1[i]['name'] + "</td>" +
-                        "<td>" + res1[i]['mobile'] + "</td>" +
-                        "<td>" + res1[i]['address'] + "</td>" +
-                        "<td>" + res1[i]['landmark'] + "</td>" +
-                        "<td>" + res1[i]['center'] + "</td>" +
-                        "<td>" + res1[i]['remark'] + "</td>" +
-                        "<td>" + res1[i]['actor'] + "</td>" +
-                        "<td>Done <i class='fa fa-check-circle'></i></td>" +
-                        "</tr>"
-                    );
-                }else{
-                    jQuery('#table_body').append(
-                        "<tr>" +
-                        "<td>"+(i+1).toString()+"</td>" +
-                        "<td>"+res1[i]['name']+"</td>" +
-                        "<td>"+res1[i]['mobile']+"</td>" +
-                        "<td>"+res1[i]['address']+"</td>" +
-                        "<td>"+res1[i]['landmark']+"</td>" +
-                        "<td>"+res1[i]['center']+"</td>" +
-                        "<td>"+res1[i]['remark']+"</td>" +
-                        "<td>"+res1[i]['actor']+"</td>" +
-                        "<td>Pending <i class='fa fa-warning'></i></td>" +
-                        "</tr>"
-                    );
-                }
-            }
-        }
-    });
-}
+});
