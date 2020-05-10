@@ -49,6 +49,7 @@ class EntryView(
         serializer = self.get_serializer(queryset, many=True)
         res = serializer.data
         res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        print(res)
         return Response(res)
 
     def put(self, request, mobile=None):
