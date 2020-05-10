@@ -288,28 +288,17 @@
                                             </tr>
                                         </thead>
                                         <tbody id="table_body">
-                                            <tr>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                                <td>test</td>
-                                            </tr>
                                             {% for x in table %}
                                                 <tr>
-                                                    <td>{{ x.0 }}</td>
-                                                    <td>{{ x.1 }}</td>
-                                                    <td>{{ x.2 }}</td>
-                                                    <td>{{ x.3 }}</td>
-                                                    <td>{{ x.4 }}</td>
-                                                    <td>{{ x.5 }}</td>
-                                                    <td>{{ x.6 }}</td>
-                                                    <td>{{ x.7 }}</td>
-                                                    <td>{{ x.8 }}</td>
+                                                    <td>{{ x.id }}</td>
+                                                    <td>{{ x.name }}</td>
+                                                    <td>{{ x.mobile }}</td>
+                                                    <td>{{ x.address }}</td>
+                                                    <td>{{ x.landmark }}</td>
+                                                    <td>{{ x.center }}</td>
+                                                    <td>{{ x.remark }}</td>
+                                                    <td>{{ x.actor }}</td>
+                                                    <td>{{ x.status }}</td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>
