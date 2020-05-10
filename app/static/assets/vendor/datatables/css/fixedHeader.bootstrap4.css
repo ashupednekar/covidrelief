@@ -12,9 +12,3 @@ table.dataTable.fixedHeader-floating {
 table.dataTable.fixedHeader-locked {
   position: absolute !important;
 }
-
-@media print {
-  table.fixedHeader-floating {
-    display: none;
-  }
-}
