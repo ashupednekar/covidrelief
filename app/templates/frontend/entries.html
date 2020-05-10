@@ -135,9 +135,9 @@
                                         "url": "{{ host }}/getcurrententries",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
+                                        jQuery('#table_body').html('');
                                         for(var i=0; i<res1.length; i++){
                                             if(res1[i]['closed'] == 'Y') {
-                                                jQuery('#table_body').html('');
                                                 jQuery('#table_body').append(
                                                     "<tr>" +
                                                     "<td>" + (i + 1).toString() + "</td>" +
