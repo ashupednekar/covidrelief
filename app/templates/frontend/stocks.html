@@ -167,6 +167,7 @@
                                                         'Stock updated successfully!',
                                                         'success'
                                                     );
+                                                    loadtable();
                                                     jQuery('#'+jQuery('.choosecenter').val()).html(res.count);//<span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-info"></i></span><span class="ml-1 text-success"></span>
                                                 }
                                             }
@@ -198,6 +199,7 @@
             {% endif %}
             {% if request.user.role == 'manager' or request.user.role == 'admin' %}
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                        {% if request.user.role == 'manager' %}
                         <div class="row">
                             <div class="col-sm-12">
                             <div class="card">
@@ -256,6 +258,7 @@
                             </div>
                         </div>
                         </div>
+                        {% endif %}
                         <div class="row">
                             <div class="col-sm-12">
                                 {% if request.user.role == 'admin' or request.user.role == 'manager' %}
