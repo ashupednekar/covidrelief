@@ -8,10 +8,18 @@ class CenterSerializer(ModelSerializer):
         model = Centers
         fields = ('center_name', 'stock_count')
 
+
 class StockSerializer(ModelSerializer):
     class Meta:
         model = Stocks
         fields = ('count',)
+
+
+class ShipmentSerializer(ModelSerializer):
+    class Meta:
+        model = Shipments
+        fields = ('center', 'shipment_id', 'sender', 'amount', 'delivered', 'timestamp')
+
 
 class EntrySerializer(ModelSerializer):
     class Meta:

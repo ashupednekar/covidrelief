@@ -5,7 +5,7 @@ from .serializers import *
 from localusers.serializers import *
 
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -199,7 +199,7 @@ class UploadView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.ListMo
 
 
 @api_view(['POST'])
-@permission_classes((AllowAny,))
+@permission_classes((IsAuthenticated,))
 def update_stock_count(request):
     if request.method == 'POST':
         try:
@@ -213,9 +213,30 @@ def update_stock_count(request):
             print('..error..', e)
             return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# @api_view(['POST'])
+# @permission_classes((IsAuthenticated,))
+# def update_center_stock_count(request):
+#     if request.method == 'POST':
+#         try:
+#             stock_count = request.data.get('stock_count')
+#             center = request.data.get('center')
+#             total_stocks = list(Stocks.objects.all().values())[0].get('count')
+#             available_stocks = total_stocks
+#             for x in list(Centers.objects.all().values()):
+#                 available_stocks -= x['stock_count']
+#             if int(stock_count) <= int(available_stocks):
+#                 Centers.objects.filter(center_name=center).update(stock_count=stock_count)
+#                 return Response({'message': 'stock at the center updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
+#             else:
+#                 return Response({'message': 'insufficient stocks'}, status=status.HTTP_200_OK)
+#         except Exception as e:
+#             print('..error..', e)
+#             return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 @api_view(['POST'])
-@permission_classes((AllowAny,))
-def update_center_stock_count(request):
+@permission_classes((IsAuthenticated,))
+def add_shipment(request):
     if request.method == 'POST':
         try:
             stock_count = request.data.get('stock_count')
@@ -225,10 +246,46 @@ def update_center_stock_count(request):
             for x in list(Centers.objects.all().values()):
                 available_stocks -= x['stock_count']
             if int(stock_count) <= int(available_stocks):
-                Centers.objects.filter(center_name=center).update(stock_count=stock_count)
+                # Centers.objects.filter(center_name=center).update(stock_count=stock_count)
+                Shipments.objects.create(sender=request.user, amount=stock_count, center=center)
                 return Response({'message': 'stock at the center updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
             else:
                 return Response({'message': 'insufficient stocks'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            print('..error..', e)
+            return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+def mark_shipments(request):
+    if request.method == 'POST':
+        try:
+            shipment_id = request.data.get('shipment_id')
+            package = Shipments.objects.filter(shipment_id=shipment_id)
+            if list(package.values()):
+                amount = list(package.values())[0]['amount']
+            else:
+                return Response({'message': 'ERROR'}, status=status.HTTP_200_OK)
+            Centers.objects.filter(shipment_id=shipment_id).update(stock_count=amount)
+            package.update(delivered='Y')
+            return Response({'message': 'Marked as delivered'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            print('..error..', e)
+            return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+def get_shipments(request):
+    if request.method == 'POST':
+        try:
+            center = request.data.get('center')
+            if center:
+                res = list(Shipments.objects.filter(center=center).values())
+            else:
+                res = list(Shipments.objects.all().values())
+            return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
             print('..error..', e)
             return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

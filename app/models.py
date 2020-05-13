@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -28,3 +30,12 @@ class Upload(models.Model):
 
 class Stocks(models.Model):
     count = models.IntegerField(null=True, blank=True, default=0)
+
+
+class Shipments(models.Model):
+    shipment_id = models.TextField(null=True, blank=True, default=str(uuid.uuid4()))
+    sender = models.TextField(null=True, blank=True)
+    center = models.TextField(null=True, blank=True)
+    amount = models.IntegerField(null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now=True, null=True, blank=True)
+    delivered = models.TextField(null=True, blank=True, default='N')  # delivered to center

@@ -24,6 +24,7 @@ def index(request):
             'host': SERVER_HOST
         })
 
+
 @login_required
 def centers(request):
     if request.user.role == 'admin':
@@ -33,8 +34,15 @@ def centers(request):
     else:
         return HttpResponse('Invalid role')
 
+
 @login_required
 def stocks(request):
+    valueslist = list(Stocks.objects.all().values())
+    entrytable = list()
+    for x in valueslist:
+        x['timestamp'] = x['timestamp'].strftime("%m/%d/%Y")
+        entrytable.append(x)
+    print(entrytable)
     if list(Stocks.objects.all().values()):
         total = Stocks.objects.all().values()[0]['count']
     else:
@@ -43,10 +51,12 @@ def stocks(request):
         return render(request, 'frontend/stocks.html', {
             'host': SERVER_HOST,
             'total': total,
-            'center_stocks': list(Centers.objects.all().values())
+            'center_stocks': list(Centers.objects.all().values()),
+            'table': entrytable
         })
     else:
         return HttpResponse('Invalid role')
+
 
 @login_required
 def entries(request):
@@ -60,6 +70,7 @@ def entries(request):
         'host': SERVER_HOST,
         'table': entrytable
     })
+
 
 @login_required
 def closed(request):

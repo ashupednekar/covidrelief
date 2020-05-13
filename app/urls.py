@@ -24,7 +24,10 @@ urlpatterns = [
     path('markasdone', mark_as_done, name='mark_as_done'),
     path('markasdoneimage', UploadView.as_view(), name='UploadView'),
     path('updatetotalstock', update_stock_count, name='update_stock_count'),
-    path('updatecenterstock', update_center_stock_count, name='update_center_stock_count'),
+    # path('updatecenterstock', update_center_stock_count, name='update_center_stock_count'),
+    path('addshipment', add_shipment, name='add_shipment'),
+    path('markshipment', mark_shipments, name='mark_shipments'),
+    path('getshipments', get_shipments, name='get_shipments'),
 ]
 
 initialize_centers()
