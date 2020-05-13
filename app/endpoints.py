@@ -267,7 +267,8 @@ def mark_shipments(request):
                 amount = list(package.values())[0]['amount']
             else:
                 return Response({'message': 'ERROR'}, status=status.HTTP_200_OK)
-            Centers.objects.filter(shipment_id=shipment_id).update(stock_count=amount)
+            center_name = list(package.values())['center']
+            Centers.objects.filter(center_name=center_name).update(stock_count=amount)
             package.update(delivered='Y')
             return Response({'message': 'Marked as delivered'}, status=status.HTTP_200_OK)
         except Exception as e:
