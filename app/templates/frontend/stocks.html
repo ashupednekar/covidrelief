@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/$/3.4.1/$.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="card border-3 border-top border-top-primary">
@@ -61,11 +61,11 @@
                                     </div>
                                 </div>
                                 <script>
-                                    jQuery('#done').on('click', function (event) {
+                                    $('#done').on('click', function (event) {
                                         event.preventDefault()
                                         var fd = new FormData();
-                                        fd.append('stock_count', jQuery('#stock_count').val())
-                                        jQuery.ajax({
+                                        fd.append('stock_count', $('#stock_count').val())
+                                        $.ajax({
                                             "method": "POST",
                                             "url": "{{ host }}/updatetotalstock",
                                             "data": fd,
@@ -78,7 +78,7 @@
                                                     'Stock updated successfully!',
                                                     'success'
                                                 );
-                                                jQuery('#totalstockdisplay').html(res['count']);
+                                                $('#totalstockdisplay').html(res['count']);
                                             }
                                         });
                                     });
@@ -95,7 +95,6 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="inputText3" class="col-form-label">Input Center Name</label>
                                             <select class="choosecenter" name="state2" style="width: 100%;">
                                             </select>
                                         </div>
@@ -112,27 +111,27 @@
                                     </div>
                                 </div>
                                 <script>
-                                    jQuery(document).ready(function () {
-                                        jQuery('.choosecenter').select2();
-                                        jQuery.ajax({
+                                    $(document).ready(function () {
+                                        $('.choosecenter').select2();
+                                        $.ajax({
                                             "method": "GET",
                                             "url": "{{ host }}/centerview",
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
                                                 for(var i=0; i<res.length; i++){
                                                     console.log(res[i]);
-                                                    jQuery('.choosecenter').append(
+                                                    $('.choosecenter').append(
                                                         "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
                                                     )
                                                 }
                                             }
                                         });
                                     });
-                                    jQuery('#done2').on('click', function (event) {
+                                    $('#done2').on('click', function (event) {
                                         event.preventDefault()
                                         var fd = new FormData();
-                                        fd.append('stock_count', jQuery('#stock_count').val())
-                                        jQuery.ajax({
+                                        fd.append('stock_count', $('#stock_count').val())
+                                        $.ajax({
                                             "method": "POST",
                                             "url": "{{ host }}/updatetotalstock",
                                             "data": fd,
@@ -145,7 +144,7 @@
                                                     'Stock updated successfully!',
                                                     'success'
                                                 );
-                                                jQuery('#totalstockdisplay').html(res['count']);
+                                                $('#totalstockdisplay').html(res['count']);
                                             }
                                         });
                                     });
