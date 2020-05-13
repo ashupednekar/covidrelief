@@ -250,13 +250,14 @@
                                             loadtable();
                                             Swal.fire(
                                                 'Success!',
-                                                'Center added successfully!',
+                                                'Entry added successfully!',
                                                 'success'
                                             );
                                         },
                                         "error": function (e) {
                                             Swal.fire(
-                                                'error',
+                                                'something went wrong',
+                                                e['message'],
                                                 'Error!'
                                             )
                                         }

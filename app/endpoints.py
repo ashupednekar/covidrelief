@@ -37,7 +37,10 @@ class EntryView(
             return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
         center_stocks = Centers.objects.filter(center_name=serializer.validated_data['center'])
         stock_count = list(center_stocks.values())[0]['stock_count']
-        center_stocks.update(stock_count=stock_count-1)
+        if stock_count > 0:
+            center_stocks.update(stock_count=stock_count-1)
+        else:
+            return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
