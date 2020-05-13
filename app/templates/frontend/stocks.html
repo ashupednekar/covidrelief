@@ -47,12 +47,18 @@
                         <div class="card-body">
                             <h5 class="text-muted">Add stocks</h5>
                             <form>
-                                <div class="form-group">
-                                    <label for="stock_count" class="col-form-label">Update stocks</label>
-                                    <input id="stock_count" type="number" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-success" id="done">Update  <i class="fa fa-save"></i></button>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="stock_count" class="col-form-label">Update stocks</label>
+                                            <input id="stock_count" type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <button class="btn btn-success" id="done">Update  <i class="fa fa-save"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <script>
                                     jQuery('#done').on('click', function (event) {
