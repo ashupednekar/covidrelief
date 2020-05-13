@@ -177,6 +177,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="card">
                         <h5 class="card-header"> Stock per center</h5>
@@ -193,7 +195,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
             {% if request.user.role == 'manager' or request.user.role == 'admin' %}
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
@@ -387,6 +388,7 @@
                         </div>
                         {% endif %}
                     </div>
+                </div>
             {% endif %}
         </div>
 </div>
