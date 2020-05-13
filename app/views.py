@@ -37,7 +37,7 @@ def centers(request):
 
 @login_required
 def stocks(request):
-    valueslist = list(Stocks.objects.all().values())
+    valueslist = list(Shipments.objects.all().values())
     entrytable = list()
     for x in valueslist:
         x['timestamp'] = x['timestamp'].strftime("%m/%d/%Y")
