@@ -205,7 +205,7 @@ def update_center_stock_count(request):
             available_stocks = total_stocks
             for x in list(Centers.objects.all().values()):
                 available_stocks -= x['stock_count']
-            if stock_count <= available_stocks:
+            if int(stock_count) <= int(available_stocks):
                 Centers.objects.filter(center_name=center).update(stock_count=stock_count)
                 return Response({'message': 'stock at the center updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
             else:
