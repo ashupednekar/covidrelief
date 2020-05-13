@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <input id="stock_count" type="number" class="form-control">
+                                            <input id="center_stock_count" type="number" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -126,6 +126,16 @@
                                                         "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
                                                     )
                                                 }
+                                            }
+                                        });
+                                    });
+                                    jQuery('.choosecenter').on('change', function () {
+                                        jQuery.ajax({
+                                            "method": "GET",
+                                            "url": "{{ host }}/centerview/"+jQuery('.choosecenter').val(),
+                                            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                            "success": function (res) {
+                                                jQuery('#center_stock_count').val(res['stock_count']);
                                             }
                                         });
                                     });
