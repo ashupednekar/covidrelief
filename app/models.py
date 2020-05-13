@@ -26,4 +26,4 @@ class Upload(models.Model):
 
 
 class Stocks(models.Model):
-    count = models.IntegerField(null=True, blank=True)
+    count = models.IntegerField(null=True, blank=True, default=0)
