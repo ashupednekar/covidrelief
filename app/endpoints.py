@@ -29,7 +29,15 @@ class EntryView(
         serializer.is_valid(raise_exception=True)
         serializer.validated_data['actor'] = request.user
         self.perform_create(serializer)
-
+        stocks = Stocks.objects.all()
+        count = list(stocks.values())[0]['count']
+        if list(stocks):
+            Stocks.objects.update(count=count-1)
+        else:
+            return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
+        center_stocks = Centers.objects.filter(center_name=serializer.validated_data['center'])
+        stock_count = list(center_stocks.values())[0]['stock_count']
+        center_stocks.update(stock_count=stock_count-1)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
