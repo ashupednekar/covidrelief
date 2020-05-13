@@ -1,7 +1,7 @@
 from app.models import Centers
 
 def initialize_centers():
-    Centers.objects.update_or_create(center_name='Jankupuram')
+    Centers.objects.update_or_create(center_name='Jankipuram')
     Centers.objects.update_or_create(center_name='Faizullaganj 1')
     Centers.objects.update_or_create(center_name='Faizullaganj 2')
     Centers.objects.update_or_create(center_name='Aliganj')
