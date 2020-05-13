@@ -8,6 +8,10 @@ class CenterSerializer(ModelSerializer):
         model = Centers
         fields = ('center_name',)
 
+class StockSerializer(ModelSerializer):
+    class Meta:
+        model = Stocks
+        fields = ('count',)
 
 class EntrySerializer(ModelSerializer):
     class Meta:

@@ -5,7 +5,7 @@ from .serializers import *
 from localusers.serializers import *
 
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -180,3 +180,16 @@ class UploadView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.ListMo
 
     def get(self, request):
         return self.list(request)
+
+
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def update_stock_count(request):
+    if request.method == 'POST':
+        try:
+            stock_count = request.data.get('stock_count')
+            Stocks.objects.update_or_create(count=stock_count)
+            return Response({'message': 'stock updated successfully'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            print('..error..', e)
+            return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

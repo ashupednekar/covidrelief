@@ -19,10 +19,11 @@ urlpatterns = [
     path('userview/<str:username>', UserView.as_view(), name='center_view'),
     path('entryview', EntryView.as_view(), name='center_view'),
     path('entryview/<str:mobile>', EntryView.as_view(), name='center_view'),
-    path('getcurrententries', get_current_entries, name='get_current_entriesK'),
+    path('getcurrententries', get_current_entries, name='get_current_entries'),
     path('getclosedentries', get_closed_entries, name='get_closed_entries'),
-    path('markasdone', mark_as_done, name='get_closed_entries'),
-    path('markasdoneimage', UploadView.as_view(), name='get_closed_entries'),
+    path('markasdone', mark_as_done, name='mark_as_done'),
+    path('markasdoneimage', UploadView.as_view(), name='UploadView'),
+    path('updatetotalstock', update_stock_count, name='update_stock_count'),
 ]
 
 initialize_centers()
