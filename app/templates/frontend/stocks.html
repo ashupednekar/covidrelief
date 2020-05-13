@@ -56,12 +56,77 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <button class="btn btn-success" id="done"><i class="fa fa-save"></i></button>
+                                            <button class="btn btn-success" id="done">update</button>
                                         </div>
                                     </div>
                                 </div>
                                 <script>
                                     jQuery('#done').on('click', function (event) {
+                                        event.preventDefault()
+                                        var fd = new FormData();
+                                        fd.append('stock_count', jQuery('#stock_count').val())
+                                        jQuery.ajax({
+                                            "method": "POST",
+                                            "url": "{{ host }}/updatetotalstock",
+                                            "data": fd,
+                                            "processData": false,
+                                            "contentType": false,
+                                            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                            "success": function (res) {
+                                                Swal.fire(
+                                                    'Success!',
+                                                    'Stock updated successfully!',
+                                                    'success'
+                                                );
+                                                jQuery('#totalstockdisplay').html(res['count']);
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="card border-3 border-top border-top-primary">
+                        <div class="card-body" style="margin-bottom: 3%">
+                            <h5 class="text-muted">Assign to centres</h5>
+                            <form>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="inputText3" class="col-form-label">Input Center Name</label>
+                                        <select class="choosecenter" name="state2" style="width: 100%;">
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <input id="stock_count" type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <button class="btn btn-success" id="done2">send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    jQuery(document).ready(function () {
+                                        jQuery('.choosecenter').select2();
+                                        jQuery.ajax({
+                                            "method": "GET",
+                                            "url": "{{ host }}/centerview",
+                                            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                            "success": function (res) {
+                                                for(var i=0; i<res.length; i++){
+                                                    console.log(res[i]);
+                                                    jQuery('.choosecenter').append(
+                                                        "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
+                                                    )
+                                                }
+                                            }
+                                        });
+                                    });
+                                    jQuery('#done2').on('click', function (event) {
                                         event.preventDefault()
                                         var fd = new FormData();
                                         fd.append('stock_count', jQuery('#stock_count').val())

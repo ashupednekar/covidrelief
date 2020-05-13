@@ -6,7 +6,7 @@ from .models import *
 class CenterSerializer(ModelSerializer):
     class Meta:
         model = Centers
-        fields = ('center_name',)
+        fields = ('center_name', 'stock_count')
 
 class StockSerializer(ModelSerializer):
     class Meta:

@@ -26,4 +26,4 @@ urlpatterns = [
     path('updatetotalstock', update_stock_count, name='update_stock_count'),
 ]
 
-initialize_centers()
+# initialize_centers()
