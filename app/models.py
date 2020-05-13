@@ -23,3 +23,7 @@ class Entries(models.Model):
 class Upload(models.Model):
     tomark = models.TextField(null=True, blank=True)
     fn = models.FileField(null=True, blank=True)
+
+
+class Stocks(models.Model):
+    count = models.IntegerField(null=True, blank=True)
