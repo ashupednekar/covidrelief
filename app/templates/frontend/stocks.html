@@ -47,15 +47,25 @@
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
             <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-            {% if request.user.role == 'admin' %}
+            {% if request.user.role == 'admin' or request.user.role == 'manager' %}
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="card border-3 border-top border-top-primary">
                         <div class="card-body">
-                            <h5 class="text-muted">Total stocks</h5>
+                            {% endif %}
+                            {% if request.user.role == 'admin' %}
+                            <h5 class="text-muted">Total stock</h5>
                             <div class="metric-value d-inline-block">
                                 <h1 class="mb-1" id="totalstockdisplay">{{ total }}</h1><br>
                             </div>
+                            {% endif %}
+                            {% if request.user.role == 'manager' %}
+                            <h5 class="text-muted">Total stock</h5>
+                            <div class="metric-value d-inline-block">
+                                <h1 class="mb-1" id="totalstockdisplay">{{ center_specific }}</h1><br>
+                            </div>
+                            {% endif %}
+                            {% if request.user.role == 'admin' %}
                             <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                 {% if total < 50 %}
                                 <span class="icon-circle-small icon-box-xs text-danger bg-danger-light"><i class="fa fa-fw fa-warning"></i></span>
