@@ -188,7 +188,10 @@ def update_stock_count(request):
     if request.method == 'POST':
         try:
             stock_count = request.data.get('stock_count')
-            Stocks.objects.update_or_create(count=stock_count)
+            if list(Stocks.objects.all()):
+                Stocks.objects.update(count=stock_count)
+            else:
+                Stocks.objects.create(count=stock_count)
             return Response({'message': 'stock updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
         except Exception as e:
             print('..error..', e)
