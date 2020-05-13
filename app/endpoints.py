@@ -157,6 +157,7 @@ def get_closed_entries(request):
     else:
         return Response({'messsage': 'Invalid Role'})
 
+
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))
 def mark_as_done(request):
@@ -167,8 +168,10 @@ def mark_as_done(request):
     else:
         return Response({'messsage': 'Invalid Role'})
 
+
 import boto3
 s3 = boto3.client('s3')
+
 
 class UploadView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.ListModelMixin):
     serializer_class = UploadSerializer
@@ -268,7 +271,8 @@ def mark_shipments(request):
             else:
                 return Response({'message': 'ERROR'}, status=status.HTTP_200_OK)
             center_name = list(package.values())[0]['center']
-            Centers.objects.filter(center_name=center_name).update(stock_count=amount)
+            center = Centers.objects.filter(center_name=center_name)
+            center.update(stock_count=list(center.values())[0]['stock_count']+amount)
             package.update(delivered='Y')
             return Response({'message': 'Marked as delivered'}, status=status.HTTP_200_OK)
         except Exception as e:
