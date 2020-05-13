@@ -34,6 +34,15 @@ def centers(request):
         return HttpResponse('Invalid role')
 
 @login_required
+def stocks(request):
+    if request.user.role == 'admin':
+        return render(request, 'frontend/stocks.html', {
+            'host': SERVER_HOST
+        })
+    else:
+        return HttpResponse('Invalid role')
+
+@login_required
 def entries(request):
     valueslist = list(Entries.objects.filter(closed='N').values())
     entrytable = list()
