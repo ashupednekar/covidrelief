@@ -170,22 +170,11 @@
                     <div class="card">
                         <h5 class="card-header"> Stock per center</h5>
                         <div class="card-body p-0">
-                            {{ center_stocks }}
                             <ul class="traffic-sales list-group list-group-flush">
-                                <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">Direct</span><span class="traffic-sales-amount">$4000.00  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1 text-success">5.86%</span></span>
+                                {% for stock in center_stocks %}
+                                <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">{{ stock.center_name }}</span><span class="traffic-sales-amount" id="{{ stock.center_name }}">{{ stock.stock_count }}  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-info"></i></span><span class="ml-1 text-success"></span></span>
                                 </li>
-                                <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Search<span class="traffic-sales-amount">$3123.00  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1 text-success">5.86%</span></span>
-                                    </span>
-                                </li>
-                                <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Social<span class="traffic-sales-amount ">$3099.00  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1 text-success">5.86%</span></span>
-                                    </span>
-                                </li>
-                                <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Referrals<span class="traffic-sales-amount ">$2220.00   <span class="icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light"><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1 text-danger">4.02%</span></span>
-                                    </span>
-                                </li>
-                                <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">Email<span class="traffic-sales-amount">$1567.00   <span class="icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light"><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1 text-danger">3.86%</span></span>
-                                    </span>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="card-footer text-center">
