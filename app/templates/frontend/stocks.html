@@ -198,61 +198,62 @@
             {% endif %}
             {% if request.user.role == 'manager' or request.user.role == 'admin' %}
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Mark as recieved</h5>
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label for="inputText3" class="col-form-label">Choose Shipment</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <select class="chooseshipment"  multiple="multiple" name="states[]" style="width: 100%;">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label class="custom-control custom-checkbox custom-control-inline">
-                                                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Delivered</span>
-                                                    </label>
-                                                </div>
+                        <div class="row">
+                            <div class="card">
+                            <h5 class="card-header">Mark as recieved</h5>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label for="inputText3" class="col-form-label">Choose Shipment</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <select class="chooseshipment"  multiple="multiple" name="states[]" style="width: 100%;">
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-success" onclick="markasdone()"> Update   <i class="fa fa-save"></i></button>
+                                        <div class="col-md-2">
+                                            <label class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Delivered</span>
+                                            </label>
                                         </div>
-                                        <script>
-                                            function markasdone() {
-                                                var data = new FormData();
-                                                data.append('shipment_id', jQuery('.chooseshipment').val())
-                                                jQuery.ajax({
-                                                    "method": "POST",
-                                                    "url": "{{ host }}/markshipment",
-                                                    "data": data,
-                                                    "processData": false,
-                                                    "contentType": false,
-                                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                                    "success": function (res) {
-                                                        loadtable();
-                                                        Swal.fire(
-                                                            'Success!',
-                                                            'Shipment marked as recieved!',
-                                                            'success'
-                                                        );
-                                                    },
-                                                    "error": function (e) {
-                                                        Swal.fire(
-                                                            'error',
-                                                            'Error!'
-                                                        )
-                                                    }
-                                                });
-                                            }
-                                        </script>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success" onclick="markasdone()"> Update   <i class="fa fa-save"></i></button>
+                                </div>
+                                <script>
+                                    function markasdone() {
+                                        var data = new FormData();
+                                        data.append('shipment_id', jQuery('.chooseshipment').val())
+                                        jQuery.ajax({
+                                            "method": "POST",
+                                            "url": "{{ host }}/markshipment",
+                                            "data": data,
+                                            "processData": false,
+                                            "contentType": false,
+                                            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                            "success": function (res) {
+                                                loadtable();
+                                                Swal.fire(
+                                                    'Success!',
+                                                    'Shipment marked as recieved!',
+                                                    'success'
+                                                );
+                                            },
+                                            "error": function (e) {
+                                                Swal.fire(
+                                                    'error',
+                                                    'Error!'
+                                                )
+                                            }
+                                        });
+                                    }
+                                </script>
                             </div>
+                        </div>
+                        </div>
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
@@ -341,7 +342,7 @@
                                 });
                             });
                         </script>
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                    <div class="row">
                         {% if request.user.role == 'admin' or request.user.role == 'manager' %}
                         <div class="card">
                             <div class="card-header">
@@ -388,6 +389,7 @@
                         </div>
                         {% endif %}
                     </div>
+                  </div>
                 </div>
             {% endif %}
         </div>
