@@ -47,7 +47,7 @@ def stocks(request):
         total = Stocks.objects.all().values()[0]['count']
     else:
         total = 0
-    if request.user.role == 'admin':
+    if request.user.role == 'admin' or request.user.role == 'manager':
         return render(request, 'frontend/stocks.html', {
             'host': SERVER_HOST,
             'total': total,
