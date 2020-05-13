@@ -42,7 +42,8 @@ def stocks(request):
     if request.user.role == 'admin':
         return render(request, 'frontend/stocks.html', {
             'host': SERVER_HOST,
-            'total': total
+            'total': total,
+            'center_stocks': list(Centers.objects.all().values())
         })
     else:
         return HttpResponse('Invalid role')
