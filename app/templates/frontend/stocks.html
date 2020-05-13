@@ -182,7 +182,7 @@
                         <div class="card-body p-0">
                             <ul class="traffic-sales list-group list-group-flush">
                                 {% for stock in center_stocks %}
-                                <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">{{ stock.center_name }}</span><div id="{{ stock.center_name }}"><span class="traffic-sales-amount">{{ stock.stock_count }}  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-info"></i></span><span class="ml-1 text-success"></span></span></div>
+                                <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">{{ stock.center_name }}</span><div><span class="traffic-sales-amount" id="{{ stock.center_name }}">{{ stock.stock_count }}  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-info"></i></span><span class="ml-1 text-success"></span></span>
                                 </li>
                                 {% endfor %}
                             </ul>
