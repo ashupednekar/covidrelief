@@ -4,4 +4,5 @@ from .models import *
 # Register your models here.
 admin.site.register(Centers)
 admin.site.register(Stocks)
+admin.site.register(Shipments)
 admin.site.register(Entries)
