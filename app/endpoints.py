@@ -201,8 +201,15 @@ def update_center_stock_count(request):
         try:
             stock_count = request.data.get('stock_count')
             center = request.data.get('center')
-            Centers.objects.filter(center_name=center).update(stock_count=stock_count)
-            return Response({'message': 'stock at the center updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
+            total_stocks = list(Stocks.objects.all().values())[0].get('count')
+            available_stocks = total_stocks
+            for x in list(Centers.objects.all().values()):
+                available_stocks -= x['stock_count']
+            if stock_count <= available_stocks:
+                Centers.objects.filter(center_name=center).update(stock_count=stock_count)
+                return Response({'message': 'stock at the center updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
+            else:
+                return Response({'message': 'insufficient stocks'}, status=status.HTTP_200_OK)
         except Exception as e:
             print('..error..', e)
             return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

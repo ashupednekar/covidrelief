@@ -76,18 +76,25 @@
                                             "contentType": false,
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
-                                                Swal.fire(
-                                                    'Success!',
-                                                    'Stock updated successfully!',
-                                                    'success'
-                                                );
-                                                jQuery('#totalstockdisplay').html(res['count']);
+                                                if(res['message'] == 'insufficient stocks'){
+                                                    Swal.fire(
+                                                        'Insufficient stocks!',
+                                                        'Please add more stocks or try a smaller value',
+                                                        'warning'
+                                                    );
+                                                }else{
+                                                    Swal.fire(
+                                                        'Success!',
+                                                        'Stock updated successfully!',
+                                                        'success'
+                                                    );
+                                                    jQuery('#totalstockdisplay').html(res['count']);
+                                                }
                                             }
                                         });
                                     });
                                 </script>
                             </form>
-                            <br>
                         </div>
                     </div>
                 </div>
