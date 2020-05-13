@@ -177,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="card">
                         <h5 class="card-header"> Stock per center</h5>
                         <div class="card-body p-0">
@@ -196,8 +196,7 @@
             </div>
             {% endif %}
             {% if request.user.role == 'manager' or request.user.role == 'admin' %}
-                <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Mark as recieved</h5>
                                     <div class="card-body">
@@ -253,7 +252,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
@@ -342,11 +340,7 @@
                                 });
                             });
                         </script>
-                    <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- data table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                         {% if request.user.role == 'admin' or request.user.role == 'manager' %}
                         <div class="card">
                             <div class="card-header">
@@ -393,7 +387,6 @@
                         </div>
                         {% endif %}
                     </div>
-                </div>
             {% endif %}
         </div>
 </div>
