@@ -76,20 +76,12 @@
                                             "contentType": false,
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
-                                                if(res['message'] == 'insufficient stocks'){
-                                                    Swal.fire(
-                                                        'Insufficient stocks!',
-                                                        'Please add more stocks or try a smaller value',
-                                                        'warning'
-                                                    );
-                                                }else{
-                                                    Swal.fire(
-                                                        'Success!',
-                                                        'Stock updated successfully!',
-                                                        'success'
-                                                    );
-                                                    jQuery('#totalstockdisplay').html(res['count']);
-                                                }
+                                                Swal.fire(
+                                                    'Success!',
+                                                    'Stock updated successfully!',
+                                                    'success'
+                                                );
+                                                jQuery('#totalstockdisplay').html(res['count']);
                                             }
                                         });
                                     });
@@ -162,12 +154,20 @@
                                             "contentType": false,
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
-                                                Swal.fire(
-                                                    'Success!',
-                                                    'Stock updated successfully!',
-                                                    'success'
-                                                );
-                                                jQuery(jQuery('.choosecenter').val()).html(res.count);
+                                                if(res['message'] == 'insufficient stocks'){
+                                                    Swal.fire(
+                                                        'Insufficient stocks!',
+                                                        'Please add more stocks or try a smaller value',
+                                                        'warning'
+                                                    );
+                                                }else{
+                                                    Swal.fire(
+                                                        'Success!',
+                                                        'Stock updated successfully!',
+                                                        'success'
+                                                    );
+                                                    jQuery('#'+jQuery('.choosecenter').val()).html(res.count);
+                                                }
                                             }
                                         });
                                     });
