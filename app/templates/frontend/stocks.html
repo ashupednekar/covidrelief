@@ -61,6 +61,7 @@
                                             <button class="btn btn-success" id="done">update</button>
                                         </div>
                                     </div>
+                                    <br>
                                 </div>
                                 <script>
                                     jQuery('#done').on('click', function (event) {
@@ -86,6 +87,7 @@
                                     });
                                 </script>
                             </form>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -158,6 +160,7 @@
                                                     'Stock updated successfully!',
                                                     'success'
                                                 );
+                                                jQuery(jQuery('.choosecenter').val()).html(res.count);
                                             }
                                         });
                                     });
