@@ -38,10 +38,10 @@ class EntryView(
         stock_count = list(center_stocks.values())[0]['stock_count']
         if stock_count > 0:
             center_stocks.update(stock_count=stock_count-1)
+            self.perform_create(serializer)
         else:
             return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
         headers = self.get_success_headers(serializer.data)
-        self.perform_create(serializer)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def get(self, request, mobile=None):
