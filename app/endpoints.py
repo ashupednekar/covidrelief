@@ -28,7 +28,6 @@ class EntryView(
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.validated_data['actor'] = request.user
-        self.perform_create(serializer)
         stocks = Stocks.objects.all()
         count = list(stocks.values())[0]['count']
         if list(stocks):
@@ -42,6 +41,7 @@ class EntryView(
         else:
             return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
         headers = self.get_success_headers(serializer.data)
+        self.perform_create(serializer)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def get(self, request, mobile=None):
