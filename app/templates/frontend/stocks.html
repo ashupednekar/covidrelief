@@ -130,6 +130,7 @@
                                         });
                                     });
                                     jQuery('.choosecenter').on('change', function () {
+                                        alert('dfdffdfdf');
                                         jQuery.ajax({
                                             "method": "GET",
                                             "url": "{{ host }}/centerview/"+jQuery('.choosecenter').val(),
