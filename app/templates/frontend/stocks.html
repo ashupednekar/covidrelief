@@ -41,8 +41,10 @@
                         </div>
                     </div>
                 </div>
-                <script src="https://ajax.googleapis.com/ajax/libs/$/3.4.1/$.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="card border-3 border-top border-top-primary">
                         <div class="card-body" style="margin-bottom: 3%">
@@ -61,11 +63,11 @@
                                     </div>
                                 </div>
                                 <script>
-                                    $('#done').on('click', function (event) {
+                                    jQuery('#done').on('click', function (event) {
                                         event.preventDefault()
                                         var fd = new FormData();
-                                        fd.append('stock_count', $('#stock_count').val())
-                                        $.ajax({
+                                        fd.append('stock_count', jQuery('#stock_count').val())
+                                        jQuery.ajax({
                                             "method": "POST",
                                             "url": "{{ host }}/updatetotalstock",
                                             "data": fd,
@@ -78,7 +80,7 @@
                                                     'Stock updated successfully!',
                                                     'success'
                                                 );
-                                                $('#totalstockdisplay').html(res['count']);
+                                                jQuery('#totalstockdisplay').html(res['count']);
                                             }
                                         });
                                     });
@@ -111,27 +113,27 @@
                                     </div>
                                 </div>
                                 <script>
-                                    $(document).ready(function () {
-                                        $('.choosecenter').select2();
-                                        $.ajax({
+                                    jQuery(document).ready(function () {
+                                        jQuery('.choosecenter').select2();
+                                        jQuery.ajax({
                                             "method": "GET",
                                             "url": "{{ host }}/centerview",
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
                                                 for(var i=0; i<res.length; i++){
                                                     console.log(res[i]);
-                                                    $('.choosecenter').append(
+                                                    jQuery('.choosecenter').append(
                                                         "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
                                                     )
                                                 }
                                             }
                                         });
                                     });
-                                    $('#done2').on('click', function (event) {
+                                    jQuery('#done2').on('click', function (event) {
                                         event.preventDefault()
                                         var fd = new FormData();
-                                        fd.append('stock_count', $('#stock_count').val())
-                                        $.ajax({
+                                        fd.append('stock_count', jQuery('#stock_count').val())
+                                        jQuery.ajax({
                                             "method": "POST",
                                             "url": "{{ host }}/updatetotalstock",
                                             "data": fd,
@@ -144,7 +146,7 @@
                                                     'Stock updated successfully!',
                                                     'success'
                                                 );
-                                                $('#totalstockdisplay').html(res['count']);
+                                                jQuery('#totalstockdisplay').html(res['count']);
                                             }
                                         });
                                     });
