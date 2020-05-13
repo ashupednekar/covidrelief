@@ -29,6 +29,7 @@ class EntryView(
         serializer.is_valid(raise_exception=True)
         serializer.validated_data['actor'] = request.user
         self.perform_create(serializer)
+
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
@@ -114,12 +115,14 @@ def get_current_entries(request):
     if request.user.role == 'admin':
         entries = Entries.objects.filter(closed='N')
         res = list(entries.values())
-        res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return Response(res, status=status.HTTP_200_OK)
     elif request.user.role == 'manager':
         entries = Entries.objects.filter(closed='N', center=request.user.center)
         res = list(entries.values())
-        res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return Response(res, status=status.HTTP_200_OK)
     else:
         return Response({'messsage': 'Invalid Role'})
@@ -131,12 +134,14 @@ def get_closed_entries(request):
     if request.user.role == 'admin':
         entries = Entries.objects.filter(closed='Y')
         res = list(entries.values())
-        res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return Response(res, status=status.HTTP_200_OK)
     elif request.user.role == 'manager':
         entries = Entries.objects.filter(closed='Y', center=request.user.center)
         res = list(entries.values())
-        res['date_received'] = res['date_received'].strftime("%m/%d/%Y")
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return Response(res, status=status.HTTP_200_OK)
     else:
         return Response({'messsage': 'Invalid Role'})
