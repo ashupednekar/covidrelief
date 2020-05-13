@@ -37,7 +37,12 @@ def centers(request):
 
 @login_required
 def stocks(request):
-    valueslist = list(Shipments.objects.all().values())
+    if request.user.role == 'admin':
+        valueslist = list(Shipments.objects.all().values())
+    elif request.user.role == 'manager':
+        valueslist = list(Shipments.objects.filter(center=request.user.center).values())
+    else:
+        return HttpResponse('Invalid role')
     entrytable = list()
     for x in valueslist:
         x['timestamp'] = x['timestamp'].strftime("%m/%d/%Y")
