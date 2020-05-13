@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <h5 class="text-muted">Total stocks</h5>
                             <div class="metric-value d-inline-block">
-                                <h1 class="mb-1">{{ total }}</h1>
+                                <h1 class="mb-1" id="totalstockdisplay">{{ total }}</h1>
                             </div>
                             <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                 {% if total < 50 %}
@@ -41,6 +41,7 @@
                         </div>
                     </div>
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="card border-3 border-top border-top-primary">
                         <div class="card-body">
@@ -50,10 +51,32 @@
                                     <label for="stock_count" class="col-form-label">Update stocks</label>
                                     <input id="stock_count" type="number" class="form-control">
                                 </div>
-
                                 <div class="form-group">
                                     <button class="btn btn-success" id="done">Update  <i class="fa fa-save"></i></button>
                                 </div>
+                                <script>
+                                    jQuery('#done').on('click', function (event) {
+                                        event.preventDefault()
+                                        var fd = new FormData();
+                                        fd.append('stock_count', jQuery('#stock_count').val())
+                                        jQuery.ajax({
+                                            "method": "POST",
+                                            "url": "{{ host }}/updatetotalstock",
+                                            "data": fd,
+                                            "processData": false,
+                                            "contentType": false,
+                                            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                            "success": function (res) {
+                                                Swal.fire(
+                                                    'Success!',
+                                                    'Stock updated successfully!',
+                                                    'success'
+                                                );
+                                                jQuery('#totalstockdisplay').html(res['count']);
+                                            }
+                                        });
+                                    });
+                                </script>
                             </form>
                             <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                 {% if total < 50 %}

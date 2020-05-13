@@ -189,7 +189,7 @@ def update_stock_count(request):
         try:
             stock_count = request.data.get('stock_count')
             Stocks.objects.update_or_create(count=stock_count)
-            return Response({'message': 'stock updated successfully'}, status=status.HTTP_200_OK)
+            return Response({'message': 'stock updated successfully', 'count': stock_count}, status=status.HTTP_200_OK)
         except Exception as e:
             print('..error..', e)
             return Response({'message': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
