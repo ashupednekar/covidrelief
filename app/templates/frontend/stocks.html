@@ -143,7 +143,8 @@
                                     jQuery('#done2').on('click', function (event) {
                                         event.preventDefault()
                                         var fd = new FormData();
-                                        fd.append('stock_count', jQuery('#stock_count').val())
+                                        fd.append('stock_count', jQuery('#center_stock_count').val())
+                                        fd.append('center', jQuery('.choosecenter').val())
                                         jQuery.ajax({
                                             "method": "POST",
                                             "url": "{{ host }}/updatecenterstock",
