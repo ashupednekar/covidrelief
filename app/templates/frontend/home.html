@@ -73,14 +73,12 @@
                         "success": function (res1) {
                             for (var i = 0; i < res1.length; i++) {
                                 index = centers.indexOf(res1[i]['center'])
-                                console.log(res1[i]['closed']);
-                                if (res[i]['closed'] == 'Y'){
+                                if (res1[i]['closed'] == 'Y'){
                                     delivered[index] = delivered[index] + 1
                                 }else{
                                     pending[index] = pending[index] + 1
                                 }
                             }
-                            console.log(centers, pending, delivered);
                             new Chartist.Bar('.ct-chart-product', {
                                 labels: centers,
                                 series: [
