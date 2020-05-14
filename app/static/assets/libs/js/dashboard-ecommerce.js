@@ -38,6 +38,9 @@
                 })
             }
         });
+        console.log('CENTERS: ', centers);
+        console.log('PENDING: ', pending);
+        console.log('DELIVERED: ', delivered);
         new Chartist.Bar('.ct-chart-product', {
             labels: centers,
             series: [
