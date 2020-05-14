@@ -4,25 +4,38 @@
         "use strict";
         // ============================================================== 
         // Product Sales
-        // ============================================================== 
-
-        new Chartist.Bar('.ct-chart-product', {
-            labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
-            series: [
-                [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
-                [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
-            ]
-        }, {
-            stackBars: true,
-            axisY: {
-                labelInterpolationFnc: function(value) {
-                    return (value);
+        // ==============================================================
+        var fd = new FormData;
+        jQuery.ajax({
+                "method": "GET",
+                "url": "{{ host }}/centerview",
+                "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                "success": function (res) {
+                var centers = [];
+                for(var i=0; i<res.length; i++){
+                    centers[i] = res[i]['center_name']
                 }
-            }
-        }).on('draw', function(data) {
-            if (data.type === 'bar') {
-                data.element.attr({
-                    style: 'stroke-width: 40px'
+                var pending_deliveries = [];
+                var received_s = [];
+                new Chartist.Bar('.ct-chart-product', {
+                    labels: centers,
+                    series: [
+                        [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
+                        [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
+                    ]
+                }, {
+                    stackBars: true,
+                    axisY: {
+                        labelInterpolationFnc: function(value) {
+                            return (value);
+                        }
+                    }
+                }).on('draw', function(data) {
+                    if (data.type === 'bar') {
+                        data.element.attr({
+                            style: 'stroke-width: 40px'
+                        });
+                    }
                 });
             }
         });
