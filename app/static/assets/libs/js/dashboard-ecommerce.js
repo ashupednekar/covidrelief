@@ -33,6 +33,9 @@
                             }else{
                                 pending[i] = pending[i] + 1
                             }
+                            console.log('CENTERS: ', centers);
+                            console.log('PENDING: ', pending);
+                            console.log('DELIVERED: ', delivered);
                         }
                     }
                 })
