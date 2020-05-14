@@ -65,7 +65,6 @@ class EntryView(
             r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return Response(res)
 
-
     def put(self, request, mobile=None):
         return self.update(request, mobile)
 
