@@ -154,31 +154,34 @@
                     </div>
                 </div>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
             <script>
                 jQuery(document).ready(function () {
                     jQuery('#dashmenu').removeClass('collapsed');
                     jQuery('#dashmenu').addClass('active');
 
-        new Chartist.Bar('.ct-chart-product', {
-            labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
-            series: [
-                [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
-                [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
-            ]
-        }, {
-            stackBars: true,
-            axisY: {
-                labelInterpolationFnc: function(value) {
-                    return (value);
-                }
-            }
-        }).on('draw', function(data) {
-            if (data.type === 'bar') {
-                data.element.attr({
-                    style: 'stroke-width: 40px'
+                new Chartist.Bar('.ct-chart-product', {
+                    labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
+                    series: [
+                        [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
+                        [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
+                    ]
+                }, {
+                    stackBars: true,
+                    axisY: {
+                        labelInterpolationFnc: function(value) {
+                            return (value);
+                        }
+                    }
+                }).on('draw', function(data) {
+                    if (data.type === 'bar') {
+                        data.element.attr({
+                            style: 'stroke-width: 40px'
+                        });
+                    }
                 });
-            }
-        });
                 })
             </script>
 {% endblock %}
