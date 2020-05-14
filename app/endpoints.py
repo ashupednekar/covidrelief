@@ -59,7 +59,7 @@ class EntryView(
             return self.get_paginated_response(serializer.data)
 
         serializer = self.get_serializer(queryset, many=True)
-        print(serializer.data)
+        print('aaaaaaaaaaaaaaaaaa', serializer.data)
         res = serializer.data
         for r in res:
             r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
