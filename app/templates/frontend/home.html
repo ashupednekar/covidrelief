@@ -75,9 +75,9 @@
                                 index = centers.indexOf(res1[i]['center'])
                                 console.log(index, res1[i]['center']);
                                 if (res[i]['closed'] == 'Y'){
-                                    delivered[i] = delivered[i] + 1
+                                    delivered[index] = delivered[index] + 1
                                 }else{
-                                    pending[i] = pending[i] + 1
+                                    pending[index] = pending[index] + 1
                                 }
                             }
                             console.log(centers, pending, delivered);
