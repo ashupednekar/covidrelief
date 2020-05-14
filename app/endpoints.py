@@ -62,7 +62,7 @@ class EntryView(
         res = []
         for r in list(serializer.data):
             r = dict(r)
-            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+            # r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
             res.append(r)
         return Response(res)
 
