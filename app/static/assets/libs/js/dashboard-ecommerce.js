@@ -5,38 +5,54 @@
         // ============================================================== 
         // Product Sales
         // ==============================================================
-        var fd = new FormData;
         jQuery.ajax({
-                "method": "GET",
-                "url": "{{ host }}/centerview",
-                "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                "success": function (res) {
+            "method": "GET",
+            "url": "{{ host }}/centerview",
+            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+            "success": function (res) {
                 var centers = [];
-                for(var i=0; i<res.length; i++){
-                    centers[i] = res[i]['center_name']
+                var pending = [];
+                var delivered = [];
+                for (var i = 0; i < res.length; i++) {
+                    centers[i] = res[i]['center_name'];
+                    pending[i] = 0;
+                    delivered[i] = 0;
                 }
-                var pending_deliveries = [];
-                var received_s = [];
-                new Chartist.Bar('.ct-chart-product', {
-                    labels: centers,
-                    series: [
-                        [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
-                        [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
-                    ]
-                }, {
-                    stackBars: true,
-                    axisY: {
-                        labelInterpolationFnc: function(value) {
-                            return (value);
+                jQuery.ajax({
+                    "method": "GET",
+                    "url": "{{ host }}/entryview",
+                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                    "success": function (res1) {
+                        for (var i = 0; i < res1.length; i++) {
+                            index = centers.indexOf(res1[i]['center'])
+                            if (res[i]['closed'] == 'Y'){
+                                delivered[i] = delivered[i] + 1
+                            }else{
+                                pending[i] = pending[i] + 1
+                            }
                         }
-                    }
-                }).on('draw', function(data) {
-                    if (data.type === 'bar') {
-                        data.element.attr({
-                            style: 'stroke-width: 40px'
+                        new Chartist.Bar('.ct-chart-product', {
+                          labels: centers,
+                          series: [
+                              delivered,
+                              pending
+                          ]
+                        }, {
+                          stackBars: true,
+                          axisY: {
+                              labelInterpolationFnc: function(value) {
+                                  return (value);
+                              }
+                          }
+                        }).on('draw', function(data) {
+                          if (data.type === 'bar') {
+                              data.element.attr({
+                                  style: 'stroke-width: 40px'
+                              });
+                          }
                         });
                     }
-                });
+                })
             }
         });
     });
