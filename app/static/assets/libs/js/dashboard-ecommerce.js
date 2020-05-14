@@ -4,20 +4,19 @@
         "use strict";
         // ============================================================== 
         // Product Sales
-        // ==============================================================
+        // ============================================================== 
 
         new Chartist.Bar('.ct-chart-product', {
-            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
             series: [
-                [800000, 1200000, 1400000, 1300000],
-                [200000, 400000, 500000, 300000],
-                [100000, 200000, 400000, 600000]
+                [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
+                [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
             ]
         }, {
             stackBars: true,
             axisY: {
                 labelInterpolationFnc: function(value) {
-                    return (value / 1000) + 'k';
+                    return (value);
                 }
             }
         }).on('draw', function(data) {
