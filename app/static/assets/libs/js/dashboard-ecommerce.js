@@ -1,16 +1,48 @@
- 
-    
+
+
     $(function() {
+
         "use strict";
         // ============================================================== 
         // Product Sales
-        // ============================================================== 
-
+        // ==============================================================
+        var centers = [];
+        var pending = [];
+        var delivered = [];
+        jQuery.ajax({
+            "method": "GET",
+            "async": false,
+            "url": "{{ host }}/centerview",
+            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+            "success": function (res) {
+                for (var i = 0; i < res.length; i++) {
+                    centers[i] = res[i]['center_name'];
+                    pending[i] = 0;
+                    delivered[i] = 0;
+                }
+                jQuery.ajax({
+                    "method": "GET",
+                    "async": false,
+                    "url": "{{ host }}/entryview",
+                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                    "success": function (res1) {
+                        for (var i = 0; i < res1.length; i++) {
+                            index = centers.indexOf(res1[i]['center'])
+                            if (res[i]['closed'] == 'Y'){
+                                delivered[i] = delivered[i] + 1
+                            }else{
+                                pending[i] = pending[i] + 1
+                            }
+                        }
+                    }
+                })
+            }
+        });
         new Chartist.Bar('.ct-chart-product', {
-            labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
+            labels: centers,
             series: [
-                [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
-                [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
+                pending,
+                delivered
             ]
         }, {
             stackBars: true,
