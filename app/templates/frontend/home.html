@@ -73,6 +73,7 @@
                         "success": function (res1) {
                             for (var i = 0; i < res1.length; i++) {
                                 index = centers.indexOf(res1[i]['center'])
+                                console.log(index, res1[i]['center']);
                                 if (res[i]['closed'] == 'Y'){
                                     delivered[i] = delivered[i] + 1
                                 }else{
