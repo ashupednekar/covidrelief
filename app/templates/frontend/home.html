@@ -28,7 +28,6 @@
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
                     <div class="ecommerce-widget">
-
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
@@ -159,6 +158,27 @@
                 jQuery(document).ready(function () {
                     jQuery('#dashmenu').removeClass('collapsed');
                     jQuery('#dashmenu').addClass('active');
+
+        new Chartist.Bar('.ct-chart-product', {
+            labels: ['Jankipuram', 'Faizullagunj 1', 'Faizullagunj 1', 'Aliganj', 'Triveni Nagar', 'Daliganj', 'Khadra', 'Hussainabad', 'Daulatganj', 'Thakurganj'],
+            series: [
+                [80, 12, 40, 13, 80, 120, 140, 13, 80, 12],
+                [20, 40, 15, 30, 20, 4, 5, 30, 2, 4]
+            ]
+        }, {
+            stackBars: true,
+            axisY: {
+                labelInterpolationFnc: function(value) {
+                    return (value);
+                }
+            }
+        }).on('draw', function(data) {
+            if (data.type === 'bar') {
+                data.element.attr({
+                    style: 'stroke-width: 40px'
+                });
+            }
+        });
                 })
             </script>
 {% endblock %}

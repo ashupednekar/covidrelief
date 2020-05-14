@@ -1,69 +1,10 @@
-
-
+ 
+    
     $(function() {
-
         "use strict";
         // ============================================================== 
         // Product Sales
         // ==============================================================
-        var centers = [];
-        var pending = [];
-        var delivered = [];
-        jQuery.ajax({
-            "method": "GET",
-            "async": false,
-            "url": "{{ host }}/centerview",
-            "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-            "success": function (res) {
-                for (var i = 0; i < res.length; i++) {
-                    centers[i] = res[i]['center_name'];
-                    pending[i] = 0;
-                    delivered[i] = 0;
-                }
-                jQuery.ajax({
-                    "method": "GET",
-                    "async": false,
-                    "url": "{{ host }}/entryview",
-                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                    "success": function (res1) {
-                        for (var i = 0; i < res1.length; i++) {
-                            index = centers.indexOf(res1[i]['center'])
-                            if (res[i]['closed'] == 'Y'){
-                                delivered[i] = delivered[i] + 1
-                            }else{
-                                pending[i] = pending[i] + 1
-                            }
-                            console.log('CENTERS: ', centers);
-                            console.log('PENDING: ', pending);
-                            console.log('DELIVERED: ', delivered);
-                        }
-                    }
-                })
-            }
-        });
-        console.log('CENTERS: ', centers);
-        console.log('PENDING: ', pending);
-        console.log('DELIVERED: ', delivered);
-        new Chartist.Bar('.ct-chart-product', {
-            labels: centers,
-            series: [
-                pending,
-                delivered
-            ]
-        }, {
-            stackBars: true,
-            axisY: {
-                labelInterpolationFnc: function(value) {
-                    return (value);
-                }
-            }
-        }).on('draw', function(data) {
-            if (data.type === 'bar') {
-                data.element.attr({
-                    style: 'stroke-width: 40px'
-                });
-            }
-        });
     });
 
 
