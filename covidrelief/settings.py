@@ -169,7 +169,7 @@ MEDIA_ROOT = 'img'
 #CONFIG
 
 CORS_ORIGIN_ALLOW_ALL = True
-SERVER_HOST = 'https://https://help.ajaysrivastavaajju.com'
+SERVER_HOST = 'https://help.ajaysrivastavaajju.com'
 # SERVER_HOST = 'https://www.help-lko.xyz/'
 # SERVER_HOST = 'http://3.7.102.76:8443'
 # SERVER_HOST = 'http://localhost:8000'
