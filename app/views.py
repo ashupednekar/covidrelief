@@ -70,15 +70,30 @@ def stocks(request):
 
 @login_required
 def entries(request):
-    valueslist = list(Entries.objects.filter(closed='N').values())
-    entrytable = list()
-    for x in valueslist:
-        x['date_received'] = x['date_received'].strftime("%m/%d/%Y")
-        entrytable.append(x)
-    print(entrytable)
+    if request.user.role == 'admin':
+        entries = Entries.objects.filter(closed='N')
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+    elif request.user.role == 'manager':
+        entries = Entries.objects.filter(closed='N', center=request.user.center)
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+    elif request.user.role == 'operator':
+        entries = Entries.objects.filter(closed='N', actor=request.user.username)
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+    # valueslist = list(Entries.objects.filter(closed='N').values())
+    # entrytable = list()
+    # for x in valueslist:
+    #     x['date_received'] = x['date_received'].strftime("%m/%d/%Y")
+    #     entrytable.append(x)
+    # print(entrytable)
     return render(request, 'frontend/entries.html', {
         'host': SERVER_HOST,
-        'table': entrytable
+        'table': res
     })
 
 
