@@ -120,13 +120,13 @@
                                 });
                             });
                             jQuery('#done').on('click', function (event) {
+                                event.preventDefault()
                                 if($('#mobile').val().length != 10){
                                     Swal.fire(
                                         'error',
                                         'Invalid Mobile No!'
                                     );
                                 }else {
-                                    event.preventDefault()
                                     var data = new FormData();
                                     data.append('name', $('#name').val())
                                     data.append('mobile', $('#mobile').val())
