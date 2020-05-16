@@ -121,6 +121,7 @@
                             });
                             jQuery('#done').on('click', function (event) {
                                 event.preventDefault()
+                                alert('button clicked')
                                 if($('#mobile').val().length != 10){
                                     Swal.fire(
                                         'error',
