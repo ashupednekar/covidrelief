@@ -149,13 +149,6 @@
                                                 'Entry added successfully!',
                                                 'success'
                                             );
-                                        },
-                                        "error": function (e) {
-                                            Swal.fire(
-                                                'something went wrong',
-                                                'Insufficient stocks, please contact admin',
-                                                'Error!'
-                                            )
                                         }
                                     });
                                 }
@@ -280,7 +273,8 @@
                                                 },
                                                 "error": function (e) {
                                                     Swal.fire(
-                                                        'error',
+                                                        'something went wrong',
+                                                        'Insufficient stocks, please contact admin',
                                                         'Error!'
                                                     )
                                                 }
