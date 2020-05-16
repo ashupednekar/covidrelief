@@ -117,7 +117,7 @@
                             jQuery('#done').on('click', function (event) {
                                 event.preventDefault()
                                 var data = new FormData();
-                                data.append('username', "{{ request.user }}");
+                                data.append('username', $('.chooseuser').val());
                                 data.append('center', $('.choosecenter').val())
                                 jQuery.ajax({
                                        "method": "PUT",
