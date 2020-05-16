@@ -159,7 +159,7 @@
                         <!-- data table  -->
                         <!-- ============================================================== -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            {% if request.user.role == 'admin' or request.user.role == 'manager' %}
+                            {% if request.user.role == 'admin' or request.user.role == 'manager' or request.user.role == 'operator' %}
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="mb-0">View Entries</h5>
