@@ -91,6 +91,19 @@ class UserView(
         else:
             return self.list(request)
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        res = [x for x in serializer.data if x['is_superuser']==False]
+        print('debug: ',res)
+        return Response(serializer.data)
+
     def put(self, request, username=None):
         return self.update(request, username)
 
