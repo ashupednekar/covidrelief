@@ -129,7 +129,7 @@ def closed(request):
     #     x['date_received'] = x['date_received'].strftime("%m/%d/%Y")
     #     entrytable.append(x)
     print('table: ', res)
-    return render(request, 'frontend/entries.html', {
+    return render(request, 'frontend/closed.html', {
         'host': SERVER_HOST,
         'table': res
     })
