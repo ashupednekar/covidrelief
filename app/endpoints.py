@@ -102,7 +102,7 @@ class UserView(
         serializer = self.get_serializer(queryset, many=True)
         res = [x for x in serializer.data if x['is_superuser']==False]
         print('debug: ',res)
-        return Response(serializer.data)
+        return Response(res)
 
     def put(self, request, username=None):
         return self.update(request, username)
