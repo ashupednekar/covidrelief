@@ -52,48 +52,48 @@
                                         "url": "/getclosedentries",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
-                                        jQuery('#table_body').html('');
-                                        for(var i=0; i<res1.length; i++){
-                                            if(res1[i]['closed'] == 'N') {
-                                                jQuery('#table_body').append(
-                                                    "<tr>" +
-                                                    "<td>" + (i+1).toString() + "</td>" +
-                                                    "<td>" + res1[i]['date_received'] + "</td>" +
-                                                    "<td>" + res1[i]['name'] + "</td>" +
-                                                    "<td>" + res1[i]['mobile'] + "</td>" +
-                                                    "<td>" + res1[i]['address'] + "</td>" +
-                                                    "<td>" + res1[i]['landmark'] + "</td>" +
-                                                    "<td>" + res1[i]['ward'] + "</td>" +
-                                                    "<td>" + res1[i]['center'] + "</td>" +
-                                                    "<td>" + res1[i]['remark'] + "</td>" +
-                                                    "<td>" + res1[i]['actor'] + "</td>" +
-                                                    "<td>Done <i class='fa fa-check-circle'></i></td>" +
-                                                    "</tr>"
-                                                );
-                                            }else{
-                                                jQuery('#table_body').append(
-                                                    "<tr>" +
-                                                    "<td>"+(i+1).toString()+"</td>" +
-                                                    "<td>"+res1[i]['date_received']+"</td>" +
-                                                    "<td>"+res1[i]['name']+"</td>" +
-                                                    "<td>"+res1[i]['mobile']+"</td>" +
-                                                    "<td>"+res1[i]['address']+"</td>" +
-                                                    "<td>"+res1[i]['landmark']+"</td>" +
-                                                    "<td>"+res1[i]['ward']+"</td>" +
-                                                    "<td>"+res1[i]['center']+"</td>" +
-                                                    "<td>"+res1[i]['remark']+"</td>" +
-                                                    "<td>"+res1[i]['actor']+"</td>" +
-                                                    "<td>Pending <i class='fa fa-warning'></i></td>" +
-                                                    "</tr>"
-                                                );
+                                            jQuery('#table_body').html('');
+                                            for(var i=0; i<res1.length; i++){
+                                                if(res1[i]['closed'] == 'N') {
+                                                    jQuery('#table_body').append(
+                                                        "<tr>" +
+                                                        "<td>" + (i+1).toString() + "</td>" +
+                                                        "<td>" + res1[i]['date_received'] + "</td>" +
+                                                        "<td>" + res1[i]['name'] + "</td>" +
+                                                        "<td>" + res1[i]['mobile'] + "</td>" +
+                                                        "<td>" + res1[i]['address'] + "</td>" +
+                                                        "<td>" + res1[i]['landmark'] + "</td>" +
+                                                        "<td>" + res1[i]['ward'] + "</td>" +
+                                                        "<td>" + res1[i]['center'] + "</td>" +
+                                                        "<td>" + res1[i]['remark'] + "</td>" +
+                                                        "<td>" + res1[i]['actor'] + "</td>" +
+                                                        "<td>Done <i class='fa fa-check-circle'></i></td>" +
+                                                        "</tr>"
+                                                    );
+                                                }else{
+                                                    jQuery('#table_body').append(
+                                                        "<tr>" +
+                                                        "<td>"+(i+1).toString()+"</td>" +
+                                                        "<td>"+res1[i]['date_received']+"</td>" +
+                                                        "<td>"+res1[i]['name']+"</td>" +
+                                                        "<td>"+res1[i]['mobile']+"</td>" +
+                                                        "<td>"+res1[i]['address']+"</td>" +
+                                                        "<td>"+res1[i]['landmark']+"</td>" +
+                                                        "<td>"+res1[i]['ward']+"</td>" +
+                                                        "<td>"+res1[i]['center']+"</td>" +
+                                                        "<td>"+res1[i]['remark']+"</td>" +
+                                                        "<td>"+res1[i]['actor']+"</td>" +
+                                                        "<td>Pending <i class='fa fa-warning'></i></td>" +
+                                                        "</tr>"
+                                                    );
+                                                }
                                             }
                                         }
-                                    }
+                                    });
+                                }
+                                jQuery(document).ready(function () {
+                                    loadtable();
                                 });
-                            }
-                            jQuery(document).ready(function () {
-                                loadtable();
-                            });
                         </script>
                     <!-- ============================================================== -->
                     <!-- end pageheader  -->
