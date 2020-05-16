@@ -23,138 +23,7 @@
                             </div>
                         </div>
                     </div>
-                        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-                        <script src="{% static '/assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
-                        <script src="{% static '/assets/vendor/multi-select/js/jquery.multi-select.js' %}"></script>
-                        <script src="{% static '/assets/libs/js/main-js.js' %}"></script>
-                        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                        <script src="{% static '/assets/vendor/datatables/js/dataTables.bootstrap4.min.js' %}"></script>
-                        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-                        <script src="{% static '/assets/vendor/datatables/js/buttons.bootstrap4.min.js' %}"></script>
-                        <script src="{% static '/assets/vendor/datatables/js/data-table.js' %}"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-                        <script srcmark ="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-                        <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-                        <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-                        <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
-                        <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
-                        <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-                        <script>
-                            function loadtable(){
-                                jQuery.ajax({
-                                        "method": "GET",
-                                        "url": "/getcurrententries",
-                                        "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                        "success": function (res1) {
-                                        jQuery('#table_body').html('');
-                                        for(var i=0; i<res1.length; i++){
-                                            if(res1[i]['closed'] == 'Y') {
-                                                jQuery('#table_body').append(
-                                                    "<tr>" +
-                                                    "<td>" + res1[i]['date_received'] + "</td>" +
-                                                    "<td>" + res1[i]['name'] + "</td>" +
-                                                    "<td>" + res1[i]['mobile'] + "</td>" +
-                                                    "<td>" + res1[i]['address'] + "</td>" +
-                                                    "<td>" + res1[i]['landmark'] + "</td>" +
-                                                    "<td>" + res1[i]['ward'] + "</td>" +
-                                                    "<td>" + res1[i]['center'] + "</td>" +
-                                                    "<td>" + res1[i]['remark'] + "</td>" +
-                                                    "<td>" + res1[i]['actor'] + "</td>" +
-                                                    "<td>Done <i class='fa fa-check-circle'></i></td>" +
-                                                    "</tr>"
-                                                );
-                                            }else{
-                                                jQuery('#table_body').append(
-                                                    "<tr>" +
-                                                    "<td>"+res1[i]['date_received']+"</td>" +
-                                                    "<td>"+res1[i]['name']+"</td>" +
-                                                    "<td>"+res1[i]['mobile']+"</td>" +
-                                                    "<td>"+res1[i]['address']+"</td>" +
-                                                    "<td>"+res1[i]['landmark']+"</td>" +
-                                                    "<td>"+res1[i]['ward']+"</td>" +
-                                                    "<td>"+res1[i]['center']+"</td>" +
-                                                    "<td>"+res1[i]['remark']+"</td>" +
-                                                    "<td>"+res1[i]['actor']+"</td>" +
-                                                    "<td>Pending <i class='fa fa-warning'></i></td>" +
-                                                    "</tr>"
-                                                );
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                            jQuery(document).ready(function () {
-                                loadtable();
-                                jQuery('.choosecenter').select2();
-                                jQuery.ajax({
-                                    "method": "GET",
-                                    "url": "/centerview",
-                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                    "success": function (res) {
-                                        for(var i=0; i<res.length; i++){
-                                            console.log(res[i]);
-                                            jQuery('.choosecenter').append(
-                                                "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
-                                            )
-                                        }
-                                    }
-                                });
-                                jQuery('.choosedelivery').select2();
-                                jQuery.ajax({
-                                    "method": "GET",
-                                    "url": "/getcurrententries",
-                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                    "success": function (res) {
-                                        for(var i=0; i<res.length; i++){
-                                            console.log(res[i]);
-                                            jQuery('.choosedelivery').append(
-                                                "<option value='"+res[i]['mobile']+"'>"+res[i]['mobile']+"</option>"
-                                            );
-                                        }
-                                    }
-                                });
-                            });
-                            jQuery('#done').on('click', function (event) {
-                                event.preventDefault()
-                                alert('button clicked')
-                                if($('#mobile').val().length != 10){
-                                    Swal.fire(
-                                        'error',
-                                        'Invalid Mobile No!'
-                                    );
-                                }else {
-                                    var data = new FormData();
-                                    data.append('name', $('#name').val())
-                                    data.append('mobile', $('#mobile').val())
-                                    data.append('landmark', $('#landmark').val())
-                                    data.append('center', $('.choosecenter').val())
-                                    data.append('address', $('#address').val())
-                                    data.append('remark', $('#remarks').val())
-                                    data.append('ward', $('#ward').val())
-                                    jQuery.ajax({
-                                        "method": "POST",
-                                        "url": "/entryview",
-                                        "data": data,
-                                        "processData": false,
-                                        "contentType": false,
-                                        "headers": {"X-CSRFToken": "{{ csrf_token }}"},
-                                        "success": function (res) {
-                                            loadtable();
-                                            Swal.fire(
-                                                'Success!',
-                                                'Entry added successfully!',
-                                                'success'
-                                            );
-                                        }
-                                    });
-                                }
-                                });
-                        </script>
+                    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
                     <div class="row">
                         <!-- ============================================================== -->
                         <!-- data table  -->
@@ -329,6 +198,137 @@
                                         <div class="form-group">
                                             <button class="btn btn-success" id="done">Save  <i class="fa fa-save"></i></button>
                                         </div>
+                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+                                        <script src="{% static '/assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+                                        <script src="{% static '/assets/vendor/multi-select/js/jquery.multi-select.js' %}"></script>
+                                        <script src="{% static '/assets/libs/js/main-js.js' %}"></script>
+                                        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                                        <script src="{% static '/assets/vendor/datatables/js/dataTables.bootstrap4.min.js' %}"></script>
+                                        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+                                        <script src="{% static '/assets/vendor/datatables/js/buttons.bootstrap4.min.js' %}"></script>
+                                        <script src="{% static '/assets/vendor/datatables/js/data-table.js' %}"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+                                        <script srcmark ="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+                                        <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+                                        <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+                                        <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+                                        <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+                                        <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+                                        <script>
+                                            function loadtable(){
+                                                jQuery.ajax({
+                                                        "method": "GET",
+                                                        "url": "/getcurrententries",
+                                                        "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                                        "success": function (res1) {
+                                                        jQuery('#table_body').html('');
+                                                        for(var i=0; i<res1.length; i++){
+                                                            if(res1[i]['closed'] == 'Y') {
+                                                                jQuery('#table_body').append(
+                                                                    "<tr>" +
+                                                                    "<td>" + res1[i]['date_received'] + "</td>" +
+                                                                    "<td>" + res1[i]['name'] + "</td>" +
+                                                                    "<td>" + res1[i]['mobile'] + "</td>" +
+                                                                    "<td>" + res1[i]['address'] + "</td>" +
+                                                                    "<td>" + res1[i]['landmark'] + "</td>" +
+                                                                    "<td>" + res1[i]['ward'] + "</td>" +
+                                                                    "<td>" + res1[i]['center'] + "</td>" +
+                                                                    "<td>" + res1[i]['remark'] + "</td>" +
+                                                                    "<td>" + res1[i]['actor'] + "</td>" +
+                                                                    "<td>Done <i class='fa fa-check-circle'></i></td>" +
+                                                                    "</tr>"
+                                                                );
+                                                            }else{
+                                                                jQuery('#table_body').append(
+                                                                    "<tr>" +
+                                                                    "<td>"+res1[i]['date_received']+"</td>" +
+                                                                    "<td>"+res1[i]['name']+"</td>" +
+                                                                    "<td>"+res1[i]['mobile']+"</td>" +
+                                                                    "<td>"+res1[i]['address']+"</td>" +
+                                                                    "<td>"+res1[i]['landmark']+"</td>" +
+                                                                    "<td>"+res1[i]['ward']+"</td>" +
+                                                                    "<td>"+res1[i]['center']+"</td>" +
+                                                                    "<td>"+res1[i]['remark']+"</td>" +
+                                                                    "<td>"+res1[i]['actor']+"</td>" +
+                                                                    "<td>Pending <i class='fa fa-warning'></i></td>" +
+                                                                    "</tr>"
+                                                                );
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                            jQuery(document).ready(function () {
+                                                loadtable();
+                                                jQuery('.choosecenter').select2();
+                                                jQuery.ajax({
+                                                    "method": "GET",
+                                                    "url": "/centerview",
+                                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                                    "success": function (res) {
+                                                        for(var i=0; i<res.length; i++){
+                                                            console.log(res[i]);
+                                                            jQuery('.choosecenter').append(
+                                                                "<option value='"+res[i]['center_name']+"'>"+res[i]['center_name']+"</option>"
+                                                            )
+                                                        }
+                                                    }
+                                                });
+                                                jQuery('.choosedelivery').select2();
+                                                jQuery.ajax({
+                                                    "method": "GET",
+                                                    "url": "/getcurrententries",
+                                                    "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                                    "success": function (res) {
+                                                        for(var i=0; i<res.length; i++){
+                                                            console.log(res[i]);
+                                                            jQuery('.choosedelivery').append(
+                                                                "<option value='"+res[i]['mobile']+"'>"+res[i]['mobile']+"</option>"
+                                                            );
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                            jQuery('#done').on('click', function (event) {
+                                                event.preventDefault()
+                                                alert('button clicked')
+                                                if($('#mobile').val().length != 10){
+                                                    Swal.fire(
+                                                        'error',
+                                                        'Invalid Mobile No!'
+                                                    );
+                                                }else {
+                                                    var data = new FormData();
+                                                    data.append('name', $('#name').val())
+                                                    data.append('mobile', $('#mobile').val())
+                                                    data.append('landmark', $('#landmark').val())
+                                                    data.append('center', $('.choosecenter').val())
+                                                    data.append('address', $('#address').val())
+                                                    data.append('remark', $('#remarks').val())
+                                                    data.append('ward', $('#ward').val())
+                                                    jQuery.ajax({
+                                                        "method": "POST",
+                                                        "url": "/entryview",
+                                                        "data": data,
+                                                        "processData": false,
+                                                        "contentType": false,
+                                                        "headers": {"X-CSRFToken": "{{ csrf_token }}"},
+                                                        "success": function (res) {
+                                                            loadtable();
+                                                            Swal.fire(
+                                                                'Success!',
+                                                                'Entry added successfully!',
+                                                                'success'
+                                                            );
+                                                        }
+                                                    });
+                                                }
+                                                });
+                                        </script>
                                     </form>
                                 </div>
                             </div>
