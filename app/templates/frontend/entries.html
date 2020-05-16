@@ -86,8 +86,11 @@
                                                         <td>{{ x.center }}</td>
                                                         <td>{{ x.remark }}</td>
                                                         <td>{{ x.actor }}</td>
-                                                        <td>{{ x.status }}</td>
-                                                    </tr>
+                                                        {% if x.closed == 'Y' %}
+                                                            <td>Done <i class='fa fa-success'></i></td>
+                                                        {% else %}
+                                                            <td>Pending <i class='fa fa-warning'></i></td>
+                                                        {% endif %}                                                    </tr>
                                                 {% endfor %}
                                             </tbody>
                                             <tfoot>
