@@ -85,6 +85,8 @@ def entries(request):
         res = list(entries.values())
         for r in res:
             r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+    else:
+        raise RuntimeError
     # valueslist = list(Entries.objects.filter(closed='N').values())
     # entrytable = list()
     # for x in valueslist:
