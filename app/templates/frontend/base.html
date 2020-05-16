@@ -255,20 +255,9 @@
                                 <a id="entrymenu" class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-fw fa-edit"></i> Entries </a>
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
-                                        {% if request.user.role == 'operator'%}
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="entries">create entries</a>
-                                        </li>
-                                        {% endif %}
-                                        <!--  -->
-                                        {% if request.user.role == 'admin' or request.user.role == 'manager' %}
                                         <li class="nav-item">
                                             <a class="nav-link" href="entries">manage entries</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="closed">manage entries</a>
-                                        </li>
-                                        {% endif %}
                                     </ul>
                                 </div>
                             </li>
