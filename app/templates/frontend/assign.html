@@ -69,8 +69,6 @@
                                     "success": function (res) {
                                         jQuery('#table_body').html('');
                                         for(var i=0; i<res.length; i++){
-                                            console.log(res[i]);
-                                            console.log('superuser status', res[i]['is_superuser']);
                                             jQuery('#table_body').append(
                                                 "<tr>" +
                                                 "<td>"+(i+1).toString()+"</td>" +
