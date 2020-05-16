@@ -104,7 +104,7 @@
                                         fd.append('stock_count', jQuery('#stock_count').val())
                                         jQuery.ajax({
                                             "method": "POST",
-                                            "url": window.location.host + "/updatetotalstock",
+                                            "url": "/updatetotalstock",
                                             "data": fd,
                                             "processData": false,
                                             "contentType": false,
@@ -151,7 +151,7 @@
                                         jQuery('.choosecenter').select2();
                                         jQuery.ajax({
                                             "method": "GET",
-                                            "url": window.location.host + "/centerview",
+                                            "url": "/centerview",
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
                                                 for(var i=0; i<res.length; i++){
@@ -166,7 +166,7 @@
                                     jQuery('.choosecenter').on('change', function () {
                                         jQuery.ajax({
                                             "method": "GET",
-                                            "url": window.location.host + "/centerview/"+jQuery('.choosecenter').val(),
+                                            "url": "/centerview/"+jQuery('.choosecenter').val(),
                                             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                             "success": function (res) {
                                                 jQuery('#center_stock_count').val(res['stock_count']);
@@ -180,7 +180,7 @@
                                         fd.append('center', jQuery('.choosecenter').val())
                                         jQuery.ajax({
                                             "method": "POST",
-                                            "url": window.location.host + "/addshipment",
+                                            "url": "/addshipment",
                                             "data": fd,
                                             "processData": false,
                                             "contentType": false,
@@ -263,7 +263,7 @@
                                         data.append('shipment_id', jQuery('.chooseshipment').val())
                                         jQuery.ajax({
                                             "method": "POST",
-                                            "url": window.location.host + "/markshipment",
+                                            "url": "/markshipment",
                                             "data": data,
                                             "processData": false,
                                             "contentType": false,
@@ -348,7 +348,7 @@
                                 {% endif %}
                                 jQuery.ajax({
                                         "method": "POST",
-                                        "url": window.location.host + "/getshipments",
+                                        "url": "/getshipments",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "data": fd,
                                         "processData": false,
@@ -392,7 +392,7 @@
                                 {% endif %}
                                 jQuery.ajax({
                                     "method": "POST",
-                                    "url": window.location.host + "/getshipments",
+                                    "url": "/getshipments",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "data": fd,
                                     "processData": false,

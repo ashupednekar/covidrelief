@@ -7,7 +7,7 @@
         // ==============================================================
         jQuery.ajax({
             "method": "GET",
-            "url": window.location.host + "/centerview",
+            "url": "/centerview",
             "headers": {"X-CSRFToken": "{{ csrf_token }}"},
             "success": function (res) {
                 var centers = [];
@@ -20,7 +20,7 @@
                 }
                 jQuery.ajax({
                     "method": "GET",
-                    "url": window.location.host + "/entryview",
+                    "url": "/entryview",
                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                     "success": function (res1) {
                         for (var i = 0; i < res1.length; i++) {

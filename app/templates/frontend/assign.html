@@ -64,7 +64,7 @@
                             function loadtable(){
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": window.location.host + "/userview",
+                                    "url": "/userview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         jQuery('#table_body').html('');
@@ -87,7 +87,7 @@
                                 jQuery('.chooseuser').select2();
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": window.location.host + "/userview",
+                                    "url": "/userview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
@@ -101,7 +101,7 @@
                                 jQuery('.choosecenter').select2();
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": window.location.host + "/centerview",
+                                    "url": "/centerview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
@@ -121,7 +121,7 @@
                                 data.append('center', $('.choosecenter').val())
                                 jQuery.ajax({
                                        "method": "PUT",
-                                       "url": window.location.host + "/userview/"+jQuery('.chooseuser').val(),
+                                       "url": "/userview/"+jQuery('.chooseuser').val(),
                                        "data": data,
                                        "processData": false,
                                        "contentType": false,

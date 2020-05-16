@@ -47,7 +47,7 @@
                             function loadtable(){
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": window.location.host + "/centerview",
+                                    "url": "/centerview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
@@ -71,7 +71,7 @@
                                 data.append('center_name', $('#inputText3').val())
                                 jQuery.ajax({
                                        "method": "POST",
-                                       "url": window.location.host + "/centerview",
+                                       "url": "/centerview",
                                        "data": data,
                                        "processData": false,
                                        "contentType": false,
