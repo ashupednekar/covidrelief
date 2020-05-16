@@ -137,6 +137,12 @@ def get_current_entries(request):
         for r in res:
             r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return Response(res, status=status.HTTP_200_OK)
+    elif request.user.role == 'operator':
+        entries = Entries.objects.filter(closed='N', center=request.user.center, actor=request.user.username)
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+        return Response(res, status=status.HTTP_200_OK)
     else:
         return Response({'messsage': 'Invalid Role'})
 
