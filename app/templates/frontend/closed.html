@@ -52,8 +52,8 @@
                                         "url": "/getclosedentries",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
+                                        jQuery('#table_body').html('');
                                         for(var i=0; i<res1.length; i++){
-                                            jQuery('#table_body').html('');
                                             if(res1[i]['closed'] == 'N') {
                                                 jQuery('#table_body').append(
                                                     "<tr>" +
