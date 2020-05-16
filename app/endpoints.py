@@ -170,20 +170,20 @@ def get_closed_entries(request):
 @permission_classes((IsAuthenticated,))
 def mark_as_done(request):
     if request.user.role in ['admin', 'manager']:
-        stocks = Stocks.objects.all()
-        count = list(stocks.values())[0]['count']
-        if list(stocks):
-            Stocks.objects.update(count=count - 1)
-        else:
-            return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
-        center_stocks = Centers.objects.filter(center_name=serializer.validated_data['center'])
-        stock_count = list(center_stocks.values())[0]['stock_count']
-        if stock_count > 0:
-            center_stocks.update(stock_count=stock_count - 1)
-            for entry in request.data.get('tomark').split(','):
-                Entries.objects.filter(mobile=entry).update(closed='Y')
-        else:
-            return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
+        # stocks = Stocks.objects.all()
+        # count = list(stocks.values())[0]['count']
+        # if list(stocks):
+        #     Stocks.objects.update(count=count - 1)
+        # else:
+        #     return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
+        # center_stocks = Centers.objects.filter(center_name=serializer.validated_data['center'])
+        # stock_count = list(center_stocks.values())[0]['stock_count']
+        # if stock_count > 0:
+        #     center_stocks.update(stock_count=stock_count - 1)
+        for entry in request.data.get('tomark').split(','):
+            Entries.objects.filter(mobile=entry).update(closed='Y')
+        # else:
+        #     return Response({'message': 'no stocks available'}, status=status.HTTP_402_PAYMENT_REQUIRED)
         return Response({'messsage': 'Success'}, status=status.HTTP_200_OK)
     else:
         return Response({'messsage': 'Invalid Role'})
