@@ -52,7 +52,10 @@ def stocks(request):
         total = Stocks.objects.all().values()[0]['count']
     else:
         total = 0
-    center_specific = Centers.objects.filter(center_name=request.user.center).values()[0]['stock_count']
+    try:
+        center_specific = Centers.objects.filter(center_name=request.user.center).values()[0]['stock_count']
+    except IndexError:
+        center_specific = 0
     if request.user.role == 'admin' or request.user.role == 'manager':
         return render(request, 'frontend/stocks.html', {
             'host': SERVER_HOST,
