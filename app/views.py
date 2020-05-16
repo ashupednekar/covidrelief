@@ -54,7 +54,7 @@ def stocks(request):
         total = 0
     try:
         center_specific = Centers.objects.filter(center_name=request.user.center).values()[0]['stock_count']
-    except IndexError:
+    except IndexError: #center unassigned
         center_specific = 0
     if request.user.role == 'admin' or request.user.role == 'manager':
         return render(request, 'frontend/stocks.html', {
