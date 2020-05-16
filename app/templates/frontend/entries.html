@@ -232,7 +232,7 @@
                                                             if(res1[i]['closed'] == 'Y') {
                                                                 jQuery('#table_body').append(
                                                                     "<tr>" +
-                                                                    "<td>" + i + "</td>" +
+                                                                    "<td>" + (i+1).toString() + "</td>" +
                                                                     "<td>" + res1[i]['date_received'] + "</td>" +
                                                                     "<td>" + res1[i]['name'] + "</td>" +
                                                                     "<td>" + res1[i]['mobile'] + "</td>" +
@@ -248,7 +248,7 @@
                                                             }else{
                                                                 jQuery('#table_body').append(
                                                                     "<tr>" +
-                                                                    "<td>"+i+"</td>" +
+                                                                    "<td>"+(i+1).toString()+"</td>" +
                                                                     "<td>"+res1[i]['date_received']+"</td>" +
                                                                     "<td>"+res1[i]['name']+"</td>" +
                                                                     "<td>"+res1[i]['mobile']+"</td>" +
