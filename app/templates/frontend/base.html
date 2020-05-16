@@ -261,6 +261,11 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="entries">manage entries</a>
                                         </li>
+                                        {% if request.user.role == 'manager' or request.user.role == 'admin' %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="closed">Delivered</a>
+                                        </li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </li>
