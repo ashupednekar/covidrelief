@@ -12,4 +12,4 @@ class LocalUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LocalUser
-        fields = ('id', 'username', 'full_name', 'status', 'disabled', 'disabled', 'email', 'password', 'center', 'role')
+        fields = ('id', 'username', 'full_name', 'status', 'disabled', 'disabled', 'email', 'password', 'center', 'role', 'is_superuser')
