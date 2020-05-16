@@ -92,7 +92,7 @@ def entries(request):
     # for x in valueslist:
     #     x['date_received'] = x['date_received'].strftime("%m/%d/%Y")
     #     entrytable.append(x)
-    print(res)
+    print('table: ', res)
     return render(request, 'frontend/entries.html', {
         'host': SERVER_HOST,
         'table': res
