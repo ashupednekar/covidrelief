@@ -48,7 +48,7 @@
                             function loadtable(){
                                 jQuery.ajax({
                                         "method": "GET",
-                                        "url": "{{ host }}/getcurrententries",
+                                        "url": window.location.host + "/getcurrententries",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
                                         jQuery('#table_body').html('');
@@ -93,7 +93,7 @@
                                 jQuery('.choosecenter').select2();
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": "{{ host }}/centerview",
+                                    "url": window.location.host + "/centerview",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
@@ -107,7 +107,7 @@
                                 jQuery('.choosedelivery').select2();
                                 jQuery.ajax({
                                     "method": "GET",
-                                    "url": "{{ host }}/getcurrententries",
+                                    "url": window.location.host + "/getcurrententries",
                                     "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                     "success": function (res) {
                                         for(var i=0; i<res.length; i++){
@@ -137,7 +137,7 @@
                                     data.append('ward', $('#ward').val())
                                     jQuery.ajax({
                                         "method": "POST",
-                                        "url": "{{ host }}/entryview",
+                                        "url": window.location.host + "/entryview",
                                         "data": data,
                                         "processData": false,
                                         "contentType": false,
@@ -258,7 +258,7 @@
                                             data.append('tomark', jQuery('.choosedelivery').val())
                                             jQuery.ajax({
                                                 "method": "POST",
-                                                "url": "{{ host }}/markasdone",
+                                                "url": window.location.host + "/markasdone",
                                                 "data": data,
                                                 "processData": false,
                                                 "contentType": false,

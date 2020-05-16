@@ -30,7 +30,7 @@
                             function loadtable(){
                                 jQuery.ajax({
                                         "method": "GET",
-                                        "url": "{{ host }}/getclosedentries",
+                                        "url": window.location.host + "/getclosedentries",
                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                         "success": function (res1) {
                                         for(var i=0; i<res1.length; i++){
