@@ -52,7 +52,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="mb-0">View Entries</h5>
-                                    <h5>{{ table }}</h5>
                                     <p></p>
                                 </div>
                                 <div class="card-body">
@@ -225,8 +224,8 @@
                                                         "url": "/getcurrententries",
                                                         "headers": {"X-CSRFToken": "{{ csrf_token }}"},
                                                         "success": function (res1) {
-                                                        //jQuery('#table_body').html('');
-                                                        for(var i=0; i<res1.length; i++){/*
+                                                        jQuery('#table_body').html('');
+                                                        for(var i=0; i<res1.length; i++){
                                                             if(res1[i]['closed'] == 'Y') {
                                                                 jQuery('#table_body').append(
                                                                     "<tr>" +
@@ -257,7 +256,7 @@
                                                                     "<td>Pending <i class='fa fa-warning'></i></td>" +
                                                                     "</tr>"
                                                                 );
-                                                            }*/
+                                                            }
                                                         }
                                                     }
                                                 });
