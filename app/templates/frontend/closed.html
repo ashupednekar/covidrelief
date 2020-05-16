@@ -85,27 +85,48 @@
                                                 <table id="example4" class="table table-striped table-bordered second" style="width:100%">
                                                     <thead>
                                                         <tr>
-                                                            <th>Sr.no</th>
+                                                            <th>Sr.No</th>
+                                                            <th>Date</th>
                                                             <th>Name</th>
                                                             <th>Mobile No</th>
                                                             <th>Address</th>
                                                             <th>Landmark</th>
+                                                            <th>Ward</th>
                                                             <th>Center</th>
                                                             <th>Remarks</th>
+                                                            <th>Operator</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="table_body">
+                                                        {% for x in table %}
+                                                            <tr>
+                                                                <td>{{ forloop.counter }}</td>
+                                                                <td>{{ x.date_received }}</td>
+                                                                <td>{{ x.name }}</td>
+                                                                <td>{{ x.mobile }}</td>
+                                                                <td>{{ x.address }}</td>
+                                                                <td>{{ x.landmark }}</td>
+                                                                <td>{{ x.ward }}</td>
+                                                                <td>{{ x.center }}</td>
+                                                                <td>{{ x.remark }}</td>
+                                                                <td>{{ x.actor }}</td>
+                                                                <td>{{ x.status }}</td>
+                                                            </tr>
+                                                        {% endfor %}
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th>Sr.no</th>
+                                                            <th>Sr.No</th>
+                                                            <th>Date</th>
                                                             <th>Name</th>
                                                             <th>Mobile No</th>
                                                             <th>Address</th>
                                                             <th>Landmark</th>
+                                                            <th>Ward</th>
                                                             <th>Center</th>
                                                             <th>Remarks</th>
+                                                            <th>Operator</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </tfoot>
