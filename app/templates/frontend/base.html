@@ -260,12 +260,13 @@
                                             <a class="nav-link" href="entries">create entries</a>
                                         </li>
                                         {% endif %}
+                                        <!--  -->
                                         {% if request.user.role == 'admin' or request.user.role == 'manager' %}
                                         <li class="nav-item">
                                             <a class="nav-link" href="entries">manage entries</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="closed">closed entries</a>
+                                            <a class="nav-link" href="closed">manage entries</a>
                                         </li>
                                         {% endif %}
                                     </ul>
