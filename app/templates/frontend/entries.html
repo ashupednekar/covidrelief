@@ -59,6 +59,7 @@
                                         <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    <th>Sr.No</th>
                                                     <th>Date</th>
                                                     <th>Name</th>
                                                     <th>Mobile No</th>
@@ -89,6 +90,7 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
+                                                    <th>Sr.No</th>
                                                     <th>Date</th>
                                                     <th>Name</th>
                                                     <th>Mobile No</th>
@@ -229,6 +231,7 @@
                                                             if(res1[i]['closed'] == 'Y') {
                                                                 jQuery('#table_body').append(
                                                                     "<tr>" +
+                                                                    "<td>" + i + "</td>" +
                                                                     "<td>" + res1[i]['date_received'] + "</td>" +
                                                                     "<td>" + res1[i]['name'] + "</td>" +
                                                                     "<td>" + res1[i]['mobile'] + "</td>" +
@@ -244,6 +247,7 @@
                                                             }else{
                                                                 jQuery('#table_body').append(
                                                                     "<tr>" +
+                                                                    "<td>"+i+"</td>" +
                                                                     "<td>"+res1[i]['date_received']+"</td>" +
                                                                     "<td>"+res1[i]['name']+"</td>" +
                                                                     "<td>"+res1[i]['mobile']+"</td>" +
