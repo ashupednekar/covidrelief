@@ -20,8 +20,13 @@ def index(request):
             'host': SERVER_HOST
         })
     else:
+        entries = Entries.objects.filter(closed='N', actor=request.user.username)
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
         return render(request, 'frontend/entries.html', {
-            'host': SERVER_HOST
+            'host': SERVER_HOST,
+            'table': res
         })
 
 
