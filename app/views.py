@@ -106,12 +106,33 @@ def entries(request):
 
 @login_required
 def closed(request):
-    if request.user.role in ['admin', 'manager']:
-        return render(request, 'frontend/closed.html', {
-            'host': SERVER_HOST
-        })
+    if request.user.role == 'admin':
+        entries = Entries.objects.filter(closed='Y')
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+    elif request.user.role == 'manager':
+        entries = Entries.objects.filter(closed='Y', center=request.user.center)
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
+    elif request.user.role == 'operator':
+        entries = Entries.objects.filter(closed='Y', actor=request.user.username)
+        res = list(entries.values())
+        for r in res:
+            r['date_received'] = r['date_received'].strftime("%m/%d/%Y")
     else:
-        return HttpResponse('Invalid Role')
+        raise RuntimeError
+    # valueslist = list(Entries.objects.filter(closed='N').values())
+    # entrytable = list()
+    # for x in valueslist:
+    #     x['date_received'] = x['date_received'].strftime("%m/%d/%Y")
+    #     entrytable.append(x)
+    print('table: ', res)
+    return render(request, 'frontend/entries.html', {
+        'host': SERVER_HOST,
+        'table': res
+    })
 
 
 @login_required
