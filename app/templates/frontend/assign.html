@@ -116,9 +116,10 @@
                                 event.preventDefault()
                                 var data = new FormData();
                                 data.append('username', $('.chooseuser').val());
-                                data.append('center', $('.choosecenter').val())
+                                data.append('center', $('.choosecenter').val());
+                                data.append('role', 'manager');
                                 jQuery.ajax({
-                                       "method": "PUT",
+                                       "method": "PUT", 
                                        "url": "/userview/"+jQuery('.chooseuser').val(),
                                        "data": data,
                                        "processData": false,
